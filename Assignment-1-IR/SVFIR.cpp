@@ -5,6 +5,7 @@
 
 #include "Graphs/SVFG.h"
 #include "SVF-LLVM/SVFIRBuilder.h"
+#include "WPA/Andersen.h"
 
 using namespace SVF;
 using namespace llvm;
@@ -37,7 +38,21 @@ int main(int argc, char** argv)
 
     // TODO: here, generate SVFIR(PAG), call graph and ICFG, and dump them to files
     //@{
+        // 1. 构建 SVFIR，也称为 PAG（程序赋值图）
+        // builder.build() 同时会构建初始 ICFG
+        SVFIR* pag = builder.build();
+        pag->dump("pag");
 
+        // 2. 运行 Andersen 指针分析，获取并导出调用图
+        AndersenWaveDiff* ander =
+            AndersenWaveDiff::createAndersenWaveDiff(pag);
+
+        auto* callgraph = ander->getCallGraph();
+        callgraph->dump("callgraph");
+
+        // 3. 获取并导出过程间控制流图（ICFG）
+        ICFG* icfg = pag->getICFG();
+        icfg->dump("icfg");
     //@}
 
     return 0;
