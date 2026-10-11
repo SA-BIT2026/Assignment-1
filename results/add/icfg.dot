@@ -1,0 +1,30 @@
+digraph "ICFG" {
+	label="ICFG";
+
+	Node0x5f21829f5510 [shape=record,color=purple,label="{GlobalICFGNode0\nCopyStmt: [Var1 \<-- Var0]  \nConstNullPtrValVar ID: 0\n ptr null \{ constant data \}\nAddrStmt: [Var11 \<-- Var12]  \nConstIntValVar ID: 11\n i32 1 \{ constant data \}\nAddrStmt: [Var4 \<-- Var5]  \nFunValVar ID: 4\nadd\nAddrStmt: [Var28 \<-- Var29]  \nFunValVar ID: 28\nllvm.dbg.declare}"];
+	Node0x5f21829f53f0 [shape=record,color=yellow,label="{FunEntryICFGNode1 \{fun: add\{ \"ln\": 1, \"file\": \"Assignment-1-IR/Test-Cases/add.c\" \}\}}"];
+	Node0x5f21829f53f0 -> Node0x5f2182a3cf10[style=solid];
+	Node0x5f21829de8c0 [shape=record,color=green,label="{FunExitICFGNode2 \{fun: add\{ \"ln\": 1, \"fl\": \"Assignment-1-IR/Test-Cases/add.c\" \}\}\nPhiStmt: [Var6 \<-- ([Var26, ICFGNode13],)]  \nValVar ID: 27\n   ret i32 %9, !dbg !26 \{ \"ln\": 4, \"cl\": 3, \"fl\": \"Assignment-1-IR/Test-Cases/add.c\" \}}"];
+	Node0x5f2182a3cf10 [shape=record,color=black,label="{IntraICFGNode3 \{fun: add\{ \"ln\": 1, \"fl\": \"Assignment-1-IR/Test-Cases/add.c\" \}\}\nAddrStmt: [Var9 \<-- Var10]  \nValVar ID: 9\n   %3 = alloca i32, align 4 \{ \"ln\": 1, \"fl\": \"Assignment-1-IR/Test-Cases/add.c\" \}}"];
+	Node0x5f2182a3cf10 -> Node0x5f2182a06370[style=solid];
+	Node0x5f2182a06370 [shape=record,color=black,label="{IntraICFGNode4 \{fun: add\{ \"ln\": 1, \"fl\": \"Assignment-1-IR/Test-Cases/add.c\" \}\}\nAddrStmt: [Var13 \<-- Var14]  \nValVar ID: 13\n   %4 = alloca i32, align 4 \{ \"ln\": 1, \"fl\": \"Assignment-1-IR/Test-Cases/add.c\" \}}"];
+	Node0x5f2182a06370 -> Node0x5f2182a098e0[style=solid];
+	Node0x5f2182a098e0 [shape=record,color=black,label="{IntraICFGNode5 \{fun: add\{ \"ln\": 3, \"fl\": \"Assignment-1-IR/Test-Cases/add.c\" \}\}\nAddrStmt: [Var15 \<-- Var16]  \nValVar ID: 15\n   %5 = alloca i32, align 4 \{ \"ln\": 3, \"fl\": \"Assignment-1-IR/Test-Cases/add.c\" \}}"];
+	Node0x5f2182a098e0 -> Node0x5f2182a09a50[style=solid];
+	Node0x5f2182a09a50 [shape=record,color=black,label="{IntraICFGNode6 \{fun: add\}\nStoreStmt: [Var9 \<-- Var7]  \nValVar ID: 17\n   store i32 %0, ptr %3, align 4 }"];
+	Node0x5f2182a09a50 -> Node0x5f2182a09bc0[style=solid];
+	Node0x5f2182a09bc0 [shape=record,color=black,label="{IntraICFGNode7 \{fun: add\}\nStoreStmt: [Var13 \<-- Var8]  \nValVar ID: 19\n   store i32 %1, ptr %4, align 4 }"];
+	Node0x5f2182a09bc0 -> Node0x5f2182a32b80[style=solid];
+	Node0x5f2182a32b80 [shape=record,color=black,label="{IntraICFGNode8 \{fun: add\{ \"ln\": 3, \"cl\": 11, \"fl\": \"Assignment-1-IR/Test-Cases/add.c\" \}\}\nLoadStmt: [Var22 \<-- Var9]  \nValVar ID: 22\n   %6 = load i32, ptr %3, align 4, !dbg !22 \{ \"ln\": 3, \"cl\": 11, \"fl\": \"Assignment-1-IR/Test-Cases/add.c\" \}}"];
+	Node0x5f2182a32b80 -> Node0x5f2182a0a200[style=solid];
+	Node0x5f2182a0a200 [shape=record,color=black,label="{IntraICFGNode9 \{fun: add\{ \"ln\": 3, \"cl\": 15, \"fl\": \"Assignment-1-IR/Test-Cases/add.c\" \}\}\nLoadStmt: [Var23 \<-- Var13]  \nValVar ID: 23\n   %7 = load i32, ptr %4, align 4, !dbg !23 \{ \"ln\": 3, \"cl\": 15, \"fl\": \"Assignment-1-IR/Test-Cases/add.c\" \}}"];
+	Node0x5f2182a0a200 -> Node0x5f21829eb7c0[style=solid];
+	Node0x5f21829eb7c0 [shape=record,color=black,label="{IntraICFGNode10 \{fun: add\{ \"ln\": 3, \"cl\": 13, \"fl\": \"Assignment-1-IR/Test-Cases/add.c\" \}\}\nBinaryOPStmt: [Var24 \<-- (Var22 opcode13 Var23)]  \nValVar ID: 24\n   %8 = add nsw i32 %6, %7, !dbg !24 \{ \"ln\": 3, \"cl\": 13, \"fl\": \"Assignment-1-IR/Test-Cases/add.c\" \}}"];
+	Node0x5f21829eb7c0 -> Node0x5f21829eaca0[style=solid];
+	Node0x5f21829eaca0 [shape=record,color=black,label="{IntraICFGNode11 \{fun: add\{ \"ln\": 3, \"cl\": 7, \"fl\": \"Assignment-1-IR/Test-Cases/add.c\" \}\}\nStoreStmt: [Var15 \<-- Var24]  \nValVar ID: 25\n   store i32 %8, ptr %5, align 4, !dbg !21 \{ \"ln\": 3, \"cl\": 7, \"fl\": \"Assignment-1-IR/Test-Cases/add.c\" \}}"];
+	Node0x5f21829eaca0 -> Node0x5f21829eaad0[style=solid];
+	Node0x5f21829eaad0 [shape=record,color=black,label="{IntraICFGNode12 \{fun: add\{ \"ln\": 4, \"cl\": 10, \"fl\": \"Assignment-1-IR/Test-Cases/add.c\" \}\}\nLoadStmt: [Var26 \<-- Var15]  \nValVar ID: 26\n   %9 = load i32, ptr %5, align 4, !dbg !25 \{ \"ln\": 4, \"cl\": 10, \"fl\": \"Assignment-1-IR/Test-Cases/add.c\" \}}"];
+	Node0x5f21829eaad0 -> Node0x5f21829ea900[style=solid];
+	Node0x5f21829ea900 [shape=record,color=black,label="{IntraICFGNode13 \{fun: add\{ \"ln\": 4, \"cl\": 3, \"fl\": \"Assignment-1-IR/Test-Cases/add.c\" \}\}\n   ret i32 %9, !dbg !26 \{ \"ln\": 4, \"cl\": 3, \"fl\": \"Assignment-1-IR/Test-Cases/add.c\" \}}"];
+	Node0x5f21829ea900 -> Node0x5f21829de8c0[style=solid];
+}
