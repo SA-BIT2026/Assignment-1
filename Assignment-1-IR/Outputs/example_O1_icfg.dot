@@ -1,0 +1,16 @@
+digraph "ICFG" {
+	label="ICFG";
+
+	Node0x5a2133ee9f40 [shape=record,color=purple,label="{GlobalICFGNode0\nCopyStmt: [Var1 \<-- Var0]  \nConstNullPtrValVar ID: 0\n ptr null \{ constant data \}\nAddrStmt: [Var13 \<-- Var14]  \nConstIntValVar ID: 13\n i32 0 \{ constant data \}\nAddrStmt: [Var4 \<-- Var5]  \nFunValVar ID: 4\nfoo\nAddrStmt: [Var9 \<-- Var10]  \nFunValVar ID: 9\nmain}"];
+	Node0x5a2133ee9f40 -> Node0x5a2133ed1700[style=solid];
+	Node0x5a2133f102d0 [shape=record,color=yellow,label="{FunEntryICFGNode1 \{fun: foo\}}"];
+	Node0x5a2133f102d0 -> Node0x5a2133ef8f00[style=solid];
+	Node0x5a2133ecc990 [shape=record,color=green,label="{FunExitICFGNode2 \{fun: foo\}\nPhiStmt: [Var6 \<-- ([Var7, ICFGNode5],)]  \nValVar ID: 8\n   ret i32 %0 }"];
+	Node0x5a2133ed1700 [shape=record,color=yellow,label="{FunEntryICFGNode3 \{fun: main\}}"];
+	Node0x5a2133ed1700 -> Node0x5a2133efafc0[style=solid];
+	Node0x5a2133ed2990 [shape=record,color=green,label="{FunExitICFGNode4 \{fun: main\}\nPhiStmt: [Var11 \<-- ([Var13, ICFGNode6],)]  \nValVar ID: 12\n   ret i32 0 }"];
+	Node0x5a2133ef8f00 [shape=record,color=black,label="{IntraICFGNode5 \{fun: foo\}\n   ret i32 %0 }"];
+	Node0x5a2133ef8f00 -> Node0x5a2133ecc990[style=solid];
+	Node0x5a2133efafc0 [shape=record,color=black,label="{IntraICFGNode6 \{fun: main\}\n   ret i32 0 }"];
+	Node0x5a2133efafc0 -> Node0x5a2133ed2990[style=solid];
+}

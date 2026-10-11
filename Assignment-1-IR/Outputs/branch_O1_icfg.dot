@@ -1,0 +1,17 @@
+digraph "ICFG" {
+	label="ICFG";
+
+	Node0x559acd1a15b0 [shape=record,color=purple,label="{GlobalICFGNode0\nCopyStmt: [Var1 \<-- Var0]  \nConstNullPtrValVar ID: 0\n ptr null \{ constant data \}\nAddrStmt: [Var15 \<-- Var16]  \nConstIntValVar ID: 15\n i32 0 \{ constant data \}\nAddrStmt: [Var9 \<-- Var10]  \nConstIntValVar ID: 9\n i32 10 \{ constant data \}\nAddrStmt: [Var4 \<-- Var5]  \nFunValVar ID: 4\nmain\nAddrStmt: [Var12 \<-- Var13]  \nFunValVar ID: 12\nsvf_assert}"];
+	Node0x559acd1a15b0 -> Node0x559acd1da000[style=solid];
+	Node0x559acd1da000 [shape=record,color=yellow,label="{FunEntryICFGNode1 \{fun: main\}}"];
+	Node0x559acd1da000 -> Node0x559acd184140[style=solid];
+	Node0x559acd1810c0 [shape=record,color=green,label="{FunExitICFGNode2 \{fun: main\}\nPhiStmt: [Var6 \<-- ([Var15, ICFGNode6],)]  \nValVar ID: 14\n   ret i32 0 }"];
+	Node0x559acd184140 [shape=record,color=black,label="{IntraICFGNode3 \{fun: main\}\nCmpStmt: [Var8 \<-- (Var7 predicate33 Var9)]  \nValVar ID: 8\n   %2 = icmp ne i32 %0, 10 }"];
+	Node0x559acd184140 -> Node0x559acd197310[style=solid];
+	Node0x559acd197310 [shape=record,color=red,label="{CallICFGNode4 \{fun: main\}\n   tail call void @svf_assert(i1 noundef zeroext %2) #2 CallICFGNode: }"];
+	Node0x559acd197310 -> Node0x559acd185ab0[style=solid];
+	Node0x559acd185ab0 [shape=record,color=blue,label="{RetICFGNode5 \{fun: main\}\n   tail call void @svf_assert(i1 noundef zeroext %2) #2 RetICFGNode: }"];
+	Node0x559acd185ab0 -> Node0x559acd188330[style=solid];
+	Node0x559acd188330 [shape=record,color=black,label="{IntraICFGNode6 \{fun: main\}\n   ret i32 0 }"];
+	Node0x559acd188330 -> Node0x559acd1810c0[style=solid];
+}

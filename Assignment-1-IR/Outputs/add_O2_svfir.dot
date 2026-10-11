@@ -1,0 +1,19 @@
+digraph "SVFIR" {
+	label="SVFIR";
+
+	Node0x560bc67ec510 [shape=record,shape=box,label="{ConstNullPtrValVar ID: 0\n ptr null \{ constant data \}}"];
+	Node0x560bc67ec510 -> Node0x560bc67ecc90[color=black];
+	Node0x560bc67ecc90 [shape=record,shape=diamond,label="{DummyValVar ID: 1}"];
+	Node0x560bc677fba0 [shape=record,shape=box3d,label="{DummyObjVar ID: 2}"];
+	Node0x560bc679a4d0 [shape=record,shape=box3d,label="{DummyObjVar ID: 3}"];
+	Node0x560bc67bd290 [shape=record,shape=box,label="{[add] FunValVar ID: 4\nadd}"];
+	Node0x560bc6791be0 [shape=record,shape=box3d,label="{[add] FunObjVar ID: 5 (base object)\nadd}"];
+	Node0x560bc6791be0 -> Node0x560bc67bd290[color=green];
+	Node0x560bc67bd120 [shape=record,shape=box,label="{[add] RetValPN ID: 6 unique return node for function add}"];
+	Node0x560bc67a8110 [shape=record,shape=box,label="{[add] ArgValVar ID: 7\n i32 %0 \{ 0th arg add  \}}"];
+	Node0x560bc67901b0 [shape=record,shape=box,label="{[add] ArgValVar ID: 8\n i32 %1 \{ 1st arg add  \}}"];
+	Node0x560bc67901b0 -> Node0x560bc67bd400[color=grey];
+	Node0x560bc67bd400 [shape=record,shape=box,label="{[add] ValVar ID: 9\n   %3 = add nsw i32 %1, %0 }"];
+	Node0x560bc67bd400 -> Node0x560bc67bd120[color=grey];
+	Node0x560bc67bda40 [shape=record,shape=box,label="{[add] ValVar ID: 10\n   ret i32 %3 }"];
+}

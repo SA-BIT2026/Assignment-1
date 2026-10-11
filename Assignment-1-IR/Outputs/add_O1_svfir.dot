@@ -1,0 +1,19 @@
+digraph "SVFIR" {
+	label="SVFIR";
+
+	Node0x5c35dfae43c0 [shape=record,shape=box,label="{ConstNullPtrValVar ID: 0\n ptr null \{ constant data \}}"];
+	Node0x5c35dfae43c0 -> Node0x5c35dfadfe80[color=black];
+	Node0x5c35dfadfe80 [shape=record,shape=diamond,label="{DummyValVar ID: 1}"];
+	Node0x5c35dfb07300 [shape=record,shape=box3d,label="{DummyObjVar ID: 2}"];
+	Node0x5c35dfae9050 [shape=record,shape=box3d,label="{DummyObjVar ID: 3}"];
+	Node0x5c35dfb07ab0 [shape=record,shape=box,label="{[add] FunValVar ID: 4\nadd}"];
+	Node0x5c35dfadcc40 [shape=record,shape=box3d,label="{[add] FunObjVar ID: 5 (base object)\nadd}"];
+	Node0x5c35dfadcc40 -> Node0x5c35dfb07ab0[color=green];
+	Node0x5c35dfb07470 [shape=record,shape=box,label="{[add] RetValPN ID: 6 unique return node for function add}"];
+	Node0x5c35dfaf1f80 [shape=record,shape=box,label="{[add] ArgValVar ID: 7\n i32 %0 \{ 0th arg add  \}}"];
+	Node0x5c35dfb35570 [shape=record,shape=box,label="{[add] ArgValVar ID: 8\n i32 %1 \{ 1st arg add  \}}"];
+	Node0x5c35dfb35570 -> Node0x5c35dfb36510[color=grey];
+	Node0x5c35dfb36510 [shape=record,shape=box,label="{[add] ValVar ID: 9\n   %3 = add nsw i32 %1, %0 }"];
+	Node0x5c35dfb36510 -> Node0x5c35dfb07470[color=grey];
+	Node0x5c35dfb36c90 [shape=record,shape=box,label="{[add] ValVar ID: 10\n   ret i32 %3 }"];
+}

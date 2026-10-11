@@ -31,14 +31,14 @@ int main(int argc, char** argv)
 
     LLVMModuleSet::getLLVMModuleSet()->buildSVFModule(moduleNameVec);
 
-    // Instantiate an SVFIR builder
+    // build the SVFIR and dump the three graphs
     SVFIRBuilder builder;
     cout << "Generating SVFIR(PAG), call graph and ICFG ..." << endl;
 
-    // TODO: here, generate SVFIR(PAG), call graph and ICFG, and dump them to files
-    //@{
-
-    //@}
+    SVFIR* svfir = builder.build();
+    svfir->dump("svfir.dot");           // PAG
+    svfir->getICFG()->dump("icfg.dot"); // ICFG
+    svfir->getCallGraph()->dump("callgraph.dot"); // call graph
 
     return 0;
 }

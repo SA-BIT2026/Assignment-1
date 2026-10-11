@@ -1,0 +1,24 @@
+digraph "ICFG" {
+	label="ICFG";
+
+	Node0x56b6f0d40e10 [shape=record,color=purple,label="{GlobalICFGNode0\nCopyStmt: [Var1 \<-- Var0]  \nConstNullPtrValVar ID: 0\n ptr null \{ constant data \}\nAddrStmt: [Var19 \<-- Var20]  \nConstIntValVar ID: 19\n i32 0 \{ constant data \}\nAddrStmt: [Var4 \<-- Var5]  \nFunValVar ID: 4\nbar\nAddrStmt: [Var9 \<-- Var10]  \nFunValVar ID: 9\nmain\nAddrStmt: [Var13 \<-- Var14]  \nFunValVar ID: 13\nsource\nAddrStmt: [Var16 \<-- Var17]  \nFunValVar ID: 16\nsink}"];
+	Node0x56b6f0d40e10 -> Node0x56b6f0d85d60[style=solid];
+	Node0x56b6f0d89150 [shape=record,color=yellow,label="{FunEntryICFGNode1 \{fun: bar\}}"];
+	Node0x56b6f0d89150 -> Node0x56b6f0d84060[style=solid];
+	Node0x56b6f0d3f080 [shape=record,color=green,label="{FunExitICFGNode2 \{fun: bar\}\nPhiStmt: [Var6 \<-- ([Var7, ICFGNode5],)]  \nValVar ID: 8\n   ret i32 %0 }"];
+	Node0x56b6f0d85d60 [shape=record,color=yellow,label="{FunEntryICFGNode3 \{fun: main\}}"];
+	Node0x56b6f0d85d60 -> Node0x56b6f0d2ac60[style=solid];
+	Node0x56b6f0d2e620 [shape=record,color=green,label="{FunExitICFGNode4 \{fun: main\}\nPhiStmt: [Var11 \<-- ([Var19, ICFGNode10],)]  \nValVar ID: 18\n   ret i32 0 }"];
+	Node0x56b6f0d84060 [shape=record,color=black,label="{IntraICFGNode5 \{fun: bar\}\n   ret i32 %0 }"];
+	Node0x56b6f0d84060 -> Node0x56b6f0d3f080[style=solid];
+	Node0x56b6f0d2ac60 [shape=record,color=red,label="{CallICFGNode6 \{fun: main\}\n   %1 = tail call i32 (...) @source() #3 CallICFGNode: }"];
+	Node0x56b6f0d2ac60 -> Node0x56b6f0d51da0[style=solid];
+	Node0x56b6f0d51da0 [shape=record,color=blue,label="{RetICFGNode7 \{fun: main\}\n   %1 = tail call i32 (...) @source() #3 RetICFGNode: }"];
+	Node0x56b6f0d51da0 -> Node0x56b6f0d2cc10[style=solid];
+	Node0x56b6f0d2cc10 [shape=record,color=red,label="{CallICFGNode8 \{fun: main\}\n   %2 = tail call i32 @sink(i32 noundef %1) #3 CallICFGNode: }"];
+	Node0x56b6f0d2cc10 -> Node0x56b6f0d84d40[style=solid];
+	Node0x56b6f0d84d40 [shape=record,color=blue,label="{RetICFGNode9 \{fun: main\}\n   %2 = tail call i32 @sink(i32 noundef %1) #3 RetICFGNode: }"];
+	Node0x56b6f0d84d40 -> Node0x56b6f0d18040[style=solid];
+	Node0x56b6f0d18040 [shape=record,color=black,label="{IntraICFGNode10 \{fun: main\}\n   ret i32 0 }"];
+	Node0x56b6f0d18040 -> Node0x56b6f0d2e620[style=solid];
+}

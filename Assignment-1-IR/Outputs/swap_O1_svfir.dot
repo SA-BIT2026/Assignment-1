@@ -1,0 +1,32 @@
+digraph "SVFIR" {
+	label="SVFIR";
+
+	Node0x5b7151d13350 [shape=record,shape=box,label="{ConstNullPtrValVar ID: 0\n ptr null \{ constant data \}}"];
+	Node0x5b7151d13350 -> Node0x5b7151cf0990[color=black];
+	Node0x5b7151cf0990 [shape=record,shape=diamond,label="{DummyValVar ID: 1}"];
+	Node0x5b7151cefcc0 [shape=record,shape=box3d,label="{DummyObjVar ID: 2}"];
+	Node0x5b7151cf6d50 [shape=record,shape=box3d,label="{DummyObjVar ID: 3}"];
+	Node0x5b7151d13cc0 [shape=record,shape=box,label="{[swap] FunValVar ID: 4\nswap}"];
+	Node0x5b7151d08f20 [shape=record,shape=box3d,label="{[swap] FunObjVar ID: 5 (base object)\nswap}"];
+	Node0x5b7151d08f20 -> Node0x5b7151d13cc0[color=green];
+	Node0x5b7151d2be30 [shape=record,shape=box,label="{[swap] RetValPN ID: 6 unique return node for function swap}"];
+	Node0x5b7151d39320 [shape=record,shape=box,label="{[swap] ArgValVar ID: 7\n ptr %0 \{ 0th arg swap  \}}"];
+	Node0x5b7151d39320 -> Node0x5b7151d14400[color=red];
+	Node0x5b7151d00cb0 [shape=record,shape=box,label="{[swap] ArgValVar ID: 8\n ptr %1 \{ 1st arg swap  \}}"];
+	Node0x5b7151d00cb0 -> Node0x5b7151d2c290[color=red];
+	Node0x5b7151d14400 [shape=record,shape=box,label="{[swap] ValVar ID: 9\n   %3 = load ptr, ptr %0, align 8, !tbaa !5 }"];
+	Node0x5b7151d14400 -> Node0x5b7151d00cb0[color=blue];
+	Node0x5b7151d2c290 [shape=record,shape=box,label="{[swap] ValVar ID: 10\n   %4 = load ptr, ptr %1, align 8, !tbaa !5 }"];
+	Node0x5b7151d2c290 -> Node0x5b7151d39320[color=blue];
+	Node0x5b7151ced210 [shape=record,shape=box,label="{[swap] ValVar ID: 11\n   store ptr %4, ptr %0, align 8, !tbaa !5 }"];
+	Node0x5b7151cfd7c0 [shape=record,shape=box,label="{[swap] ValVar ID: 12\n   store ptr %3, ptr %1, align 8, !tbaa !5 }"];
+	Node0x5b7151d12fb0 [shape=record,shape=box,label="{[swap] ValVar ID: 13\n   ret void }"];
+	Node0x5b7151d5b330 [shape=record,shape=box,label="{[main] FunValVar ID: 14\nmain}"];
+	Node0x5b7151d13e90 [shape=record,shape=box3d,label="{[main] FunObjVar ID: 15 (base object)\nmain}"];
+	Node0x5b7151d13e90 -> Node0x5b7151d5b330[color=green];
+	Node0x5b7151d13520 [shape=record,shape=box,label="{[main] RetValPN ID: 16 unique return node for function main}"];
+	Node0x5b7151cfd220 [shape=record,shape=box,label="{[main] ValVar ID: 17\n   ret i32 0 }"];
+	Node0x5b7151d2aab0 [shape=record,shape=box,label="{ConstIntValVar ID: 18\n i32 0 \{ constant data \}}"];
+	Node0x5b7151d2aab0 -> Node0x5b7151d13520[color=grey];
+	Node0x5b7151cfd050 [shape=record,shape=box3d,label="{ConstIntObjVar ID: 19\n i32 0 \{ constant data \}}"];
+}
