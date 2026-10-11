@@ -35,8 +35,19 @@ int main(int argc, char** argv)
     SVFIRBuilder builder;
     cout << "Generating SVFIR(PAG), call graph and ICFG ..." << endl;
 
-    // TODO: here, generate SVFIR(PAG), call graph and ICFG, and dump them to files
+    // Generate SVFIR (PAG), call graph and ICFG, and dump them to files
     //@{
+    // Build SVFIR (PAG), together with the call graph and ICFG.
+    SVFIR* pag = builder.build();
+    pag->dump("pag");
+
+    // Export the call graph.
+    CallGraph* callGraph = pag->getCallGraph();
+    callGraph->dump("callgraph");
+
+    // Export the interprocedural control-flow graph.
+    ICFG* icfg = pag->getICFG();
+    icfg->dump("icfg");
 
     //@}
 
