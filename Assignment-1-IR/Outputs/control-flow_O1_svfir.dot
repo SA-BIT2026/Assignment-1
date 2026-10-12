@@ -1,0 +1,36 @@
+digraph "SVFIR" {
+	label="SVFIR";
+
+	Node0x5b31dec84f50 [shape=record,shape=box,label="{ConstNullPtrValVar ID: 0\n ptr null \{ constant data \}}"];
+	Node0x5b31dec84f50 -> Node0x5b31dec64560[color=black];
+	Node0x5b31dec64560 [shape=record,shape=diamond,label="{DummyValVar ID: 1}"];
+	Node0x5b31dec59df0 [shape=record,shape=box3d,label="{DummyObjVar ID: 2}"];
+	Node0x5b31dec6e580 [shape=record,shape=box3d,label="{DummyObjVar ID: 3}"];
+	Node0x5b31dec660c0 [shape=record,shape=box,label="{[bar] FunValVar ID: 4\nbar}"];
+	Node0x5b31dec6ecc0 [shape=record,shape=box3d,label="{[bar] FunObjVar ID: 5 (base object)\nbar}"];
+	Node0x5b31dec6ecc0 -> Node0x5b31dec660c0[color=green];
+	Node0x5b31dec63c90 [shape=record,shape=box,label="{[bar] RetValPN ID: 6 unique return node for function bar}"];
+	Node0x5b31dec6e3f0 [shape=record,shape=box,label="{[bar] ArgValVar ID: 7\n i32 %0 \{ 0th arg bar  \}}"];
+	Node0x5b31dec6e3f0 -> Node0x5b31dec63c90[color=grey];
+	Node0x5b31dec54620 [shape=record,shape=box,label="{[bar] ValVar ID: 8\n   ret i32 %0 }"];
+	Node0x5b31dec6f650 [shape=record,shape=box,label="{[main] FunValVar ID: 9\nmain}"];
+	Node0x5b31dec5c3d0 [shape=record,shape=box3d,label="{[main] FunObjVar ID: 10 (base object)\nmain}"];
+	Node0x5b31dec5c3d0 -> Node0x5b31dec6f650[color=green];
+	Node0x5b31dec638b0 [shape=record,shape=box,label="{[main] RetValPN ID: 11 unique return node for function main}"];
+	Node0x5b31dec66370 [shape=record,shape=box,label="{[main] ValVar ID: 12\n   %1 = tail call i32 (...) @source() #3 }"];
+	Node0x5b31dec45ca0 [shape=record,shape=box,label="{[source] FunValVar ID: 13\nsource}"];
+	Node0x5b31dec64730 [shape=record,shape=box3d,label="{[source] FunObjVar ID: 14 (base object)\nsource}"];
+	Node0x5b31dec64730 -> Node0x5b31dec45ca0[color=green];
+	Node0x5b31dec847a0 [shape=record,shape=box,label="{[main] ValVar ID: 15\n   %2 = tail call i32 @sink(i32 noundef %1) #3 }"];
+	Node0x5b31dec84910 [shape=record,shape=box,label="{[sink] FunValVar ID: 16\nsink}"];
+	Node0x5b31dec6f820 [shape=record,shape=box3d,label="{[sink] FunObjVar ID: 17 (base object)\nsink}"];
+	Node0x5b31dec6f820 -> Node0x5b31dec84910[color=green];
+	Node0x5b31dec84630 [shape=record,shape=box,label="{[main] ValVar ID: 18\n   ret i32 0 }"];
+	Node0x5b31decb9350 [shape=record,shape=box,label="{ConstIntValVar ID: 19\n i32 0 \{ constant data \}}"];
+	Node0x5b31decb9350 -> Node0x5b31dec638b0[color=grey];
+	Node0x5b31dec58b60 [shape=record,shape=box3d,label="{ConstIntObjVar ID: 20\n i32 0 \{ constant data \}}"];
+	Node0x5b31dec64900 [shape=record,shape=box,label="{[source] RetValPN ID: 21 unique return node for function source}"];
+	Node0x5b31dec636e0 [shape=record,shape=box,label="{[source] VarArgValPN ID: 22 Var arg node for function source}"];
+	Node0x5b31decb36f0 [shape=record,shape=box,label="{[sink] RetValPN ID: 23 unique return node for function sink}"];
+	Node0x5b31dec6e920 [shape=record,shape=box,label="{[sink] ArgValVar ID: 24\n i32 %0 \{ 0th arg sink  \}}"];
+}

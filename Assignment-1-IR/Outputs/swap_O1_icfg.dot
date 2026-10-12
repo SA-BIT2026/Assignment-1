@@ -1,0 +1,24 @@
+digraph "ICFG" {
+	label="ICFG";
+
+	Node0x5b7151d146f0 [shape=record,color=purple,label="{GlobalICFGNode0\nCopyStmt: [Var1 \<-- Var0]  \nConstNullPtrValVar ID: 0\n ptr null \{ constant data \}\nAddrStmt: [Var18 \<-- Var19]  \nConstIntValVar ID: 18\n i32 0 \{ constant data \}\nAddrStmt: [Var4 \<-- Var5]  \nFunValVar ID: 4\nswap\nAddrStmt: [Var14 \<-- Var15]  \nFunValVar ID: 14\nmain}"];
+	Node0x5b7151d146f0 -> Node0x5b7151ce9c60[style=solid];
+	Node0x5b7151d23e50 [shape=record,color=yellow,label="{FunEntryICFGNode1 \{fun: swap\}}"];
+	Node0x5b7151d23e50 -> Node0x5b7151d29090[style=solid];
+	Node0x5b7151cf61f0 [shape=record,color=green,label="{FunExitICFGNode2 \{fun: swap\}}"];
+	Node0x5b7151ce9c60 [shape=record,color=yellow,label="{FunEntryICFGNode3 \{fun: main\}}"];
+	Node0x5b7151ce9c60 -> Node0x5b7151d12de0[style=solid];
+	Node0x5b7151d257b0 [shape=record,color=green,label="{FunExitICFGNode4 \{fun: main\}\nPhiStmt: [Var16 \<-- ([Var18, ICFGNode10],)]  \nValVar ID: 17\n   ret i32 0 }"];
+	Node0x5b7151d29090 [shape=record,color=black,label="{IntraICFGNode5 \{fun: swap\}\nLoadStmt: [Var9 \<-- Var7]  \nValVar ID: 9\n   %3 = load ptr, ptr %0, align 8, !tbaa !5 }"];
+	Node0x5b7151d29090 -> Node0x5b7151d29200[style=solid];
+	Node0x5b7151d29200 [shape=record,color=black,label="{IntraICFGNode6 \{fun: swap\}\nLoadStmt: [Var10 \<-- Var8]  \nValVar ID: 10\n   %4 = load ptr, ptr %1, align 8, !tbaa !5 }"];
+	Node0x5b7151d29200 -> Node0x5b7151d29840[style=solid];
+	Node0x5b7151d29840 [shape=record,color=black,label="{IntraICFGNode7 \{fun: swap\}\nStoreStmt: [Var7 \<-- Var10]  \nValVar ID: 11\n   store ptr %4, ptr %0, align 8, !tbaa !5 }"];
+	Node0x5b7151d29840 -> Node0x5b7151ceaf60[style=solid];
+	Node0x5b7151ceaf60 [shape=record,color=black,label="{IntraICFGNode8 \{fun: swap\}\nStoreStmt: [Var8 \<-- Var9]  \nValVar ID: 12\n   store ptr %3, ptr %1, align 8, !tbaa !5 }"];
+	Node0x5b7151ceaf60 -> Node0x5b7151cfb600[style=solid];
+	Node0x5b7151cfb600 [shape=record,color=black,label="{IntraICFGNode9 \{fun: swap\}\n   ret void }"];
+	Node0x5b7151cfb600 -> Node0x5b7151cf61f0[style=solid];
+	Node0x5b7151d12de0 [shape=record,color=black,label="{IntraICFGNode10 \{fun: main\}\n   ret i32 0 }"];
+	Node0x5b7151d12de0 -> Node0x5b7151d257b0[style=solid];
+}
