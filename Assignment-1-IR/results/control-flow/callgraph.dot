@@ -1,0 +1,13 @@
+digraph "Call Graph" {
+	label="Call Graph";
+
+	Node0x55e8bb82f8e0 [shape=record,shape=box,label="{CallGraphNode ID: 0 \{fun: bar\}}"];
+	Node0x55e8bb837f30 [shape=record,shape=box,label="{CallGraphNode ID: 1 \{fun: main\}|{<s0>1|<s1>2|<s2>3|<s3>4|<s4>5}}"];
+	Node0x55e8bb837f30:s0 -> Node0x55e8bb842540[color=black];
+	Node0x55e8bb837f30:s1 -> Node0x55e8bb82f8e0[color=black];
+	Node0x55e8bb837f30:s2 -> Node0x55e8bb842ea0[color=black];
+	Node0x55e8bb837f30:s3 -> Node0x55e8bb82f8e0[color=black];
+	Node0x55e8bb837f30:s4 -> Node0x55e8bb842ea0[color=black];
+	Node0x55e8bb842540 [shape=record,shape=Mrecord,label="{CallGraphNode ID: 2 \{fun: source\}}"];
+	Node0x55e8bb842ea0 [shape=record,shape=Mrecord,label="{CallGraphNode ID: 3 \{fun: sink\}}"];
+}
