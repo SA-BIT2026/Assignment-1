@@ -1,0 +1,8 @@
+digraph "Call Graph" {
+	label="Call Graph";
+
+	Node0x56e4b5f42360 [shape=record,shape=box,label="{CallGraphNode ID: 0 \{fun: foo\}}"];
+	Node0x56e4b5f4b7d0 [shape=record,shape=box,label="{CallGraphNode ID: 1 \{fun: main\}|{<s0>1}}"];
+	Node0x56e4b5f4b7d0:s0 -> Node0x56e4b5f42360[color=black];
+	Node0x56e4b5f55de0 [shape=record,shape=Mrecord,label="{CallGraphNode ID: 2 \{fun: llvm.dbg.declare\}}"];
+}
