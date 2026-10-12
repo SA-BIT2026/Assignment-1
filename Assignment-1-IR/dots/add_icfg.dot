@@ -1,0 +1,30 @@
+digraph "ICFG" {
+	label="ICFG";
+
+	Node0x6142275c6740 [shape=record,color=purple,label="{GlobalICFGNode0\nCopyStmt: [Var1 \<-- Var0]  \nConstNullPtrValVar ID: 0\n ptr null \{ constant data \}\nAddrStmt: [Var11 \<-- Var12]  \nConstIntValVar ID: 11\n i32 1 \{ constant data \}\nAddrStmt: [Var4 \<-- Var5]  \nFunValVar ID: 4\nadd\nAddrStmt: [Var28 \<-- Var29]  \nFunValVar ID: 28\nllvm.dbg.declare}"];
+	Node0x6142275f99c0 [shape=record,color=yellow,label="{FunEntryICFGNode1 \{fun: add\{ \"ln\": 1, \"file\": \"add.c\" \}\}}"];
+	Node0x6142275f99c0 -> Node0x6142275eb9b0[style=solid];
+	Node0x6142275a32b0 [shape=record,color=green,label="{FunExitICFGNode2 \{fun: add\{ \"ln\": 1, \"fl\": \"add.c\" \}\}\nPhiStmt: [Var6 \<-- ([Var26, ICFGNode13],)]  \nValVar ID: 27\n   ret i32 %9, !dbg !25 \{ \"ln\": 4, \"cl\": 3, \"fl\": \"add.c\" \}}"];
+	Node0x6142275eb9b0 [shape=record,color=black,label="{IntraICFGNode3 \{fun: add\{ \"ln\": 1, \"fl\": \"add.c\" \}\}\nAddrStmt: [Var9 \<-- Var10]  \nValVar ID: 9\n   %3 = alloca i32, align 4 \{ \"ln\": 1, \"fl\": \"add.c\" \}}"];
+	Node0x6142275eb9b0 -> Node0x614227611140[style=solid];
+	Node0x614227611140 [shape=record,color=black,label="{IntraICFGNode4 \{fun: add\{ \"ln\": 1, \"fl\": \"add.c\" \}\}\nAddrStmt: [Var13 \<-- Var14]  \nValVar ID: 13\n   %4 = alloca i32, align 4 \{ \"ln\": 1, \"fl\": \"add.c\" \}}"];
+	Node0x614227611140 -> Node0x6142275ec490[style=solid];
+	Node0x6142275ec490 [shape=record,color=black,label="{IntraICFGNode5 \{fun: add\{ \"ln\": 3, \"fl\": \"add.c\" \}\}\nAddrStmt: [Var15 \<-- Var16]  \nValVar ID: 15\n   %5 = alloca i32, align 4 \{ \"ln\": 3, \"fl\": \"add.c\" \}}"];
+	Node0x6142275ec490 -> Node0x6142275d7b00[style=solid];
+	Node0x6142275d7b00 [shape=record,color=black,label="{IntraICFGNode6 \{fun: add\}\nStoreStmt: [Var9 \<-- Var7]  \nValVar ID: 17\n   store i32 %0, ptr %3, align 4 }"];
+	Node0x6142275d7b00 -> Node0x614227609e40[style=solid];
+	Node0x614227609e40 [shape=record,color=black,label="{IntraICFGNode7 \{fun: add\}\nStoreStmt: [Var13 \<-- Var8]  \nValVar ID: 19\n   store i32 %1, ptr %4, align 4 }"];
+	Node0x614227609e40 -> Node0x61422760db30[style=solid];
+	Node0x61422760db30 [shape=record,color=black,label="{IntraICFGNode8 \{fun: add\{ \"ln\": 3, \"cl\": 11, \"fl\": \"add.c\" \}\}\nLoadStmt: [Var22 \<-- Var9]  \nValVar ID: 22\n   %6 = load i32, ptr %3, align 4, !dbg !21 \{ \"ln\": 3, \"cl\": 11, \"fl\": \"add.c\" \}}"];
+	Node0x61422760db30 -> Node0x6142275de3d0[style=solid];
+	Node0x6142275de3d0 [shape=record,color=black,label="{IntraICFGNode9 \{fun: add\{ \"ln\": 3, \"cl\": 15, \"fl\": \"add.c\" \}\}\nLoadStmt: [Var23 \<-- Var13]  \nValVar ID: 23\n   %7 = load i32, ptr %4, align 4, !dbg !22 \{ \"ln\": 3, \"cl\": 15, \"fl\": \"add.c\" \}}"];
+	Node0x6142275de3d0 -> Node0x6142275dad90[style=solid];
+	Node0x6142275dad90 [shape=record,color=black,label="{IntraICFGNode10 \{fun: add\{ \"ln\": 3, \"cl\": 13, \"fl\": \"add.c\" \}\}\nBinaryOPStmt: [Var24 \<-- (Var22 opcode13 Var23)]  \nValVar ID: 24\n   %8 = add nsw i32 %6, %7, !dbg !23 \{ \"ln\": 3, \"cl\": 13, \"fl\": \"add.c\" \}}"];
+	Node0x6142275dad90 -> Node0x6142275daf00[style=solid];
+	Node0x6142275daf00 [shape=record,color=black,label="{IntraICFGNode11 \{fun: add\{ \"ln\": 3, \"cl\": 7, \"fl\": \"add.c\" \}\}\nStoreStmt: [Var15 \<-- Var24]  \nValVar ID: 25\n   store i32 %8, ptr %5, align 4, !dbg !20 \{ \"ln\": 3, \"cl\": 7, \"fl\": \"add.c\" \}}"];
+	Node0x6142275daf00 -> Node0x6142275db070[style=solid];
+	Node0x6142275db070 [shape=record,color=black,label="{IntraICFGNode12 \{fun: add\{ \"ln\": 4, \"cl\": 10, \"fl\": \"add.c\" \}\}\nLoadStmt: [Var26 \<-- Var15]  \nValVar ID: 26\n   %9 = load i32, ptr %5, align 4, !dbg !24 \{ \"ln\": 4, \"cl\": 10, \"fl\": \"add.c\" \}}"];
+	Node0x6142275db070 -> Node0x6142275db6b0[style=solid];
+	Node0x6142275db6b0 [shape=record,color=black,label="{IntraICFGNode13 \{fun: add\{ \"ln\": 4, \"cl\": 3, \"fl\": \"add.c\" \}\}\n   ret i32 %9, !dbg !25 \{ \"ln\": 4, \"cl\": 3, \"fl\": \"add.c\" \}}"];
+	Node0x6142275db6b0 -> Node0x6142275a32b0[style=solid];
+}

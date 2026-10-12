@@ -37,7 +37,16 @@ int main(int argc, char** argv)
 
     // TODO: here, generate SVFIR(PAG), call graph and ICFG, and dump them to files
     //@{
+    SVFIR* pag = builder.build();
 
+    /// Build call graph and ICFG
+    CallGraph* callgraph = pag->getCallGraph();
+    ICFG* icfg = pag->getICFG();
+
+    /// Dump SVFIR, call graph, and ICFG to .dot files
+    pag->dump("svfir");
+    callgraph->dump("callgraph");
+    icfg->dump("icfg");
     //@}
 
     return 0;
