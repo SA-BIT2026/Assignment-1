@@ -1,0 +1,32 @@
+digraph "ICFG" {
+	label="ICFG";
+
+	Node0x558956a0ecf0 [shape=record,color=purple,label="{GlobalICFGNode0\nCopyStmt: [Var1 \<-- Var0]  \nConstNullPtrValVar ID: 0\n ptr null \{ constant data \}\nAddrStmt: [Var14 \<-- Var15]  \nConstIntValVar ID: 14\n i32 3 \{ constant data \}\nAddrStmt: [Var22 \<-- Var23]  \nConstIntValVar ID: 22\n i32 0 \{ constant data \}\nAddrStmt: [Var4 \<-- Var5]  \nFunValVar ID: 4\nfoo\nAddrStmt: [Var9 \<-- Var10]  \nFunValVar ID: 9\nmain\nAddrStmt: [Var19 \<-- Var20]  \nFunValVar ID: 19\nsvf_assert}"];
+	Node0x558956a0ecf0 -> Node0x5589569f69e0[style=solid];
+	Node0x5589569ec920 [shape=record,color=yellow,label="{FunEntryICFGNode1 \{fun: foo\}}"];
+	Node0x5589569ec920 -> Node0x558956a4e1c0[style=solid];
+	Node0x5589569e5a50 [shape=record,color=green,label="{FunExitICFGNode2 \{fun: foo\}\nPhiStmt: [Var6 \<-- ([Var7, ICFGNode5],)]  \nValVar ID: 8\n   ret i32 %p |{<s0>0x558956a55790|<s1>0x5589569fa050}}"];
+	Node0x5589569e5a50:s0 -> Node0x5589569f9490[style=solid,color=blue];
+	Node0x5589569e5a50:s1 -> Node0x558956a1f4b0[style=solid,color=blue];
+	Node0x5589569f69e0 [shape=record,color=yellow,label="{FunEntryICFGNode3 \{fun: main\}}"];
+	Node0x5589569f69e0 -> Node0x558956a55790[style=solid];
+	Node0x558956a567a0 [shape=record,color=green,label="{FunExitICFGNode4 \{fun: main\}\nPhiStmt: [Var11 \<-- ([Var22, ICFGNode13],)]  \nValVar ID: 21\n   ret i32 0 }"];
+	Node0x558956a4e1c0 [shape=record,color=black,label="{IntraICFGNode5 \{fun: foo\}\n   ret i32 %p }"];
+	Node0x558956a4e1c0 -> Node0x5589569e5a50[style=solid];
+	Node0x558956a55790 [shape=record,color=red,label="{CallICFGNode6 \{fun: main\}\nCallPE: [Var7 \<-- Var14]  \nValVar ID: 13\n   %call = call i32 @foo(i32 noundef 3) |{<s0>0x558956a55790}}"];
+	Node0x558956a55790:s0 -> Node0x5589569ec920[style=solid,color=red];
+	Node0x5589569f9490 [shape=record,color=blue,label="{RetICFGNode7 \{fun: main\}\nRetPE: [Var13 \<-- Var6]  \nValVar ID: 13\n   %call = call i32 @foo(i32 noundef 3) }"];
+	Node0x5589569f9490 -> Node0x5589569fa050[style=solid];
+	Node0x5589569fa050 [shape=record,color=red,label="{CallICFGNode8 \{fun: main\}\nCallPE: [Var7 \<-- Var12]  \nValVar ID: 16\n   %call1 = call i32 @foo(i32 noundef %argc) |{<s0>0x5589569fa050}}"];
+	Node0x5589569fa050:s0 -> Node0x5589569ec920[style=solid,color=red];
+	Node0x558956a1f4b0 [shape=record,color=blue,label="{RetICFGNode9 \{fun: main\}\nRetPE: [Var16 \<-- Var6]  \nValVar ID: 16\n   %call1 = call i32 @foo(i32 noundef %argc) }"];
+	Node0x558956a1f4b0 -> Node0x5589569f3920[style=solid];
+	Node0x5589569f3920 [shape=record,color=black,label="{IntraICFGNode10 \{fun: main\}\nCmpStmt: [Var17 \<-- (Var16 predicate32 Var12)]  \nValVar ID: 17\n   %cmp = icmp eq i32 %call1, %argc }"];
+	Node0x5589569f3920 -> Node0x558956a0fb20[style=solid];
+	Node0x558956a0fb20 [shape=record,color=red,label="{CallICFGNode11 \{fun: main\}\n   call void @svf_assert(i1 noundef zeroext %cmp) CallICFGNode: }"];
+	Node0x558956a0fb20 -> Node0x558956a0f630[style=solid];
+	Node0x558956a0f630 [shape=record,color=blue,label="{RetICFGNode12 \{fun: main\}\n   call void @svf_assert(i1 noundef zeroext %cmp) RetICFGNode: }"];
+	Node0x558956a0f630 -> Node0x558956a229d0[style=solid];
+	Node0x558956a229d0 [shape=record,color=black,label="{IntraICFGNode13 \{fun: main\}\n   ret i32 0 }"];
+	Node0x558956a229d0 -> Node0x558956a567a0[style=solid];
+}

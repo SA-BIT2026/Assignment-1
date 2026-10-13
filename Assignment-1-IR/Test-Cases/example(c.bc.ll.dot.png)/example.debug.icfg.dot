@@ -1,0 +1,31 @@
+digraph "ICFG" {
+	label="ICFG";
+
+	Node0x5b232f47dbf0 [shape=record,color=purple,label="{GlobalICFGNode0\nCopyStmt: [Var1 \<-- Var0]  \nConstNullPtrValVar ID: 0\n ptr null \{ constant data \}\nAddrStmt: [Var29 \<-- Var30]  \nConstIntValVar ID: 29\n i32 0 \{ constant data \}\nAddrStmt: [Var10 \<-- Var11]  \nConstIntValVar ID: 10\n i32 1 \{ constant data \}\nAddrStmt: [Var4 \<-- Var5]  \nFunValVar ID: 4\nfoo\nAddrStmt: [Var16 \<-- Var17]  \nFunValVar ID: 16\nllvm.dbg.declare\nAddrStmt: [Var22 \<-- Var23]  \nFunValVar ID: 22\nmain}"];
+	Node0x5b232f47dbf0 -> Node0x5b232f472220[style=solid];
+	Node0x5b232f467710 [shape=record,color=yellow,label="{FunEntryICFGNode1 \{fun: foo\{ \"ln\": 1, \"file\": \"example.c\" \}\}}"];
+	Node0x5b232f467710 -> Node0x5b232f49b950[style=solid];
+	Node0x5b232f466720 [shape=record,color=green,label="{FunExitICFGNode2 \{fun: foo\{ \"ln\": 1, \"fl\": \"example.c\" \}\}\nPhiStmt: [Var6 \<-- ([Var14, ICFGNode8],)]  \nValVar ID: 15\n   ret i32 %0, !dbg !18 \{ \"ln\": 2, \"cl\": 5, \"fl\": \"example.c\" \}|{<s0>0x5b232f47e480}}"];
+	Node0x5b232f466720:s0 -> Node0x5b232f49f190[style=solid,color=blue];
+	Node0x5b232f472220 [shape=record,color=yellow,label="{FunEntryICFGNode3 \{fun: main\{ \"ln\": 4, \"file\": \"example.c\" \}\}}"];
+	Node0x5b232f472220 -> Node0x5b232f49eb50[style=solid];
+	Node0x5b232f4b82b0 [shape=record,color=green,label="{FunExitICFGNode4 \{fun: main\{ \"ln\": 5, \"fl\": \"example.c\" \}\}\nPhiStmt: [Var24 \<-- ([Var29, ICFGNode13],)]  \nValVar ID: 32\n   ret i32 0, !dbg !18 \{ \"ln\": 6, \"cl\": 1, \"fl\": \"example.c\" \}}"];
+	Node0x5b232f49b950 [shape=record,color=black,label="{IntraICFGNode5 \{fun: foo\{ \"ln\": 1, \"fl\": \"example.c\" \}\}\nAddrStmt: [Var8 \<-- Var9]  \nValVar ID: 8\n   %b.addr = alloca i32, align 4 \{ \"ln\": 1, \"fl\": \"example.c\" \}}"];
+	Node0x5b232f49b950 -> Node0x5b232f475e90[style=solid];
+	Node0x5b232f475e90 [shape=record,color=black,label="{IntraICFGNode6 \{fun: foo\}\nStoreStmt: [Var8 \<-- Var7]  \nValVar ID: 12\n   store i32 %b, ptr %b.addr, align 4 }"];
+	Node0x5b232f475e90 -> Node0x5b232f49e870[style=solid];
+	Node0x5b232f49e870 [shape=record,color=black,label="{IntraICFGNode7 \{fun: foo\{ \"ln\": 2, \"cl\": 12, \"fl\": \"example.c\" \}\}\nLoadStmt: [Var14 \<-- Var8]  \nValVar ID: 14\n   %0 = load i32, ptr %b.addr, align 4, !dbg !17 \{ \"ln\": 2, \"cl\": 12, \"fl\": \"example.c\" \}}"];
+	Node0x5b232f49e870 -> Node0x5b232f49e9e0[style=solid];
+	Node0x5b232f49e9e0 [shape=record,color=black,label="{IntraICFGNode8 \{fun: foo\{ \"ln\": 2, \"cl\": 5, \"fl\": \"example.c\" \}\}\n   ret i32 %0, !dbg !18 \{ \"ln\": 2, \"cl\": 5, \"fl\": \"example.c\" \}}"];
+	Node0x5b232f49e9e0 -> Node0x5b232f466720[style=solid];
+	Node0x5b232f49eb50 [shape=record,color=black,label="{IntraICFGNode9 \{fun: main\{ \"ln\": 5, \"fl\": \"example.c\" \}\}\nAddrStmt: [Var25 \<-- Var26]  \nValVar ID: 25\n   %a = alloca i32, align 4 \{ \"ln\": 5, \"fl\": \"example.c\" \}}"];
+	Node0x5b232f49eb50 -> Node0x5b232f47e480[style=solid];
+	Node0x5b232f47e480 [shape=record,color=red,label="{CallICFGNode10 \{fun: main\{ \"ln\": 5, \"cl\": 10, \"fl\": \"example.c\" \}\}\nCallPE: [Var7 \<-- Var29]  \nValVar ID: 28\n   %call = call i32 @foo(i32 noundef 0), !dbg !17 \{ \"ln\": 5, \"cl\": 10, \"fl\": \"example.c\" \}|{<s0>0x5b232f47e480}}"];
+	Node0x5b232f47e480:s0 -> Node0x5b232f467710[style=solid,color=red];
+	Node0x5b232f49f190 [shape=record,color=blue,label="{RetICFGNode11 \{fun: main\{ \"ln\": 5, \"cl\": 10, \"fl\": \"example.c\" \}\}\nRetPE: [Var28 \<-- Var6]  \nValVar ID: 28\n   %call = call i32 @foo(i32 noundef 0), !dbg !17 \{ \"ln\": 5, \"cl\": 10, \"fl\": \"example.c\" \}}"];
+	Node0x5b232f49f190 -> Node0x5b232f474930[style=solid];
+	Node0x5b232f474930 [shape=record,color=black,label="{IntraICFGNode12 \{fun: main\{ \"ln\": 5, \"cl\": 6, \"fl\": \"example.c\" \}\}\nStoreStmt: [Var25 \<-- Var28]  \nValVar ID: 31\n   store i32 %call, ptr %a, align 4, !dbg !16 \{ \"ln\": 5, \"cl\": 6, \"fl\": \"example.c\" \}}"];
+	Node0x5b232f474930 -> Node0x5b232f470d80[style=solid];
+	Node0x5b232f470d80 [shape=record,color=black,label="{IntraICFGNode13 \{fun: main\{ \"ln\": 6, \"cl\": 1, \"fl\": \"example.c\" \}\}\n   ret i32 0, !dbg !18 \{ \"ln\": 6, \"cl\": 1, \"fl\": \"example.c\" \}}"];
+	Node0x5b232f470d80 -> Node0x5b232f4b82b0[style=solid];
+}
