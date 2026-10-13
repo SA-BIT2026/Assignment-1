@@ -1,3 +1,20 @@
 cmake-build-debug/
 build/
 .idea/
+
+# Local build outputs and generated test artifacts
+/build/
+/Assignment-1-IR/svfir
+/Assignment-1-IR/SVFIR.cpp.backup
+/Assignment-1-IR/SVFIR.cpp.save
+/Assignment-1-IR/Test-Cases/*.ll
+/Assignment-1-IR/Test-Cases/*.pre.bc
+/svfir.dot
+/callgraph.dot
+/icfg.dot
+/svfir.png
+/callgraph.png
+/icfg.png
+/callgraph_副本.png
+/results/
+/SVFIR.cpp
