@@ -1,0 +1,52 @@
+7,22c7,23
+< define dso_local void @swap(ptr noundef %0, ptr noundef %1) #0 {
+<   %3 = alloca ptr, align 8
+<   %4 = alloca ptr, align 8
+<   %5 = alloca ptr, align 8
+<   store ptr %0, ptr %3, align 8
+<   store ptr %1, ptr %4, align 8
+<   %6 = load ptr, ptr %3, align 8
+<   %7 = load ptr, ptr %6, align 8
+<   store ptr %7, ptr %5, align 8
+<   %8 = load ptr, ptr %4, align 8
+<   %9 = load ptr, ptr %8, align 8
+<   %10 = load ptr, ptr %3, align 8
+<   store ptr %9, ptr %10, align 8
+<   %11 = load ptr, ptr %5, align 8
+<   %12 = load ptr, ptr %4, align 8
+<   store ptr %11, ptr %12, align 8
+---
+> define dso_local void @swap(ptr noundef %p, ptr noundef %q) #0 {
+> entry:
+>   %p.addr = alloca ptr, align 8
+>   %q.addr = alloca ptr, align 8
+>   %t = alloca ptr, align 8
+>   store ptr %p, ptr %p.addr, align 8
+>   store ptr %q, ptr %q.addr, align 8
+>   %0 = load ptr, ptr %p.addr, align 8
+>   %1 = load ptr, ptr %0, align 8
+>   store ptr %1, ptr %t, align 8
+>   %2 = load ptr, ptr %q.addr, align 8
+>   %3 = load ptr, ptr %2, align 8
+>   %4 = load ptr, ptr %p.addr, align 8
+>   store ptr %3, ptr %4, align 8
+>   %5 = load ptr, ptr %t, align 8
+>   %6 = load ptr, ptr %q.addr, align 8
+>   store ptr %5, ptr %6, align 8
+28,34c29,36
+<   %1 = alloca i8, align 1
+<   %2 = alloca i8, align 1
+<   %3 = alloca ptr, align 8
+<   %4 = alloca ptr, align 8
+<   store ptr %1, ptr %3, align 8
+<   store ptr %2, ptr %4, align 8
+<   call void @swap(ptr noundef %3, ptr noundef %4)
+---
+> entry:
+>   %a1 = alloca i8, align 1
+>   %b1 = alloca i8, align 1
+>   %a = alloca ptr, align 8
+>   %b = alloca ptr, align 8
+>   store ptr %a1, ptr %a, align 8
+>   store ptr %b1, ptr %b, align 8
+>   call void @swap(ptr noundef %a, ptr noundef %b)

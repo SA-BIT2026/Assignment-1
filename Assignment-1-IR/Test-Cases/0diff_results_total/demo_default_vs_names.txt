@@ -1,0 +1,89 @@
+9a10
+> entry:
+15,40c16,42
+<   %1 = alloca i32, align 4
+<   %2 = alloca ptr, align 8
+<   %3 = alloca ptr, align 8
+<   %4 = alloca ptr, align 8
+<   %5 = alloca ptr, align 8
+<   %6 = alloca i32, align 4
+<   %7 = alloca [5 x i32], align 16
+<   %8 = alloca i32, align 4
+<   store i32 0, ptr %1, align 4
+<   %9 = call ptr @tgetstr()
+<   store ptr %9, ptr %2, align 8
+<   %10 = load ptr, ptr %2, align 8
+<   store ptr %10, ptr %3, align 8
+<   %11 = load ptr, ptr %3, align 8
+<   store ptr %11, ptr %4, align 8
+<   %12 = load ptr, ptr %4, align 8
+<   call void @broadcast(ptr noundef %12)
+<   store i32 1, ptr %6, align 4
+<   store ptr %6, ptr %5, align 8
+<   %13 = load ptr, ptr %5, align 8
+<   store i32 3, ptr %13, align 4
+<   %14 = load i32, ptr %6, align 4
+<   %15 = icmp eq i32 %14, 3
+<   call void @svf_assert(i1 noundef zeroext %15)
+<   store i32 0, ptr %8, align 4
+<   br label %16
+---
+> entry:
+>   %retval = alloca i32, align 4
+>   %injection = alloca ptr, align 8
+>   %s = alloca ptr, align 8
+>   %b = alloca ptr, align 8
+>   %p = alloca ptr, align 8
+>   %a = alloca i32, align 4
+>   %arr = alloca [5 x i32], align 16
+>   %i = alloca i32, align 4
+>   store i32 0, ptr %retval, align 4
+>   %call = call ptr @tgetstr()
+>   store ptr %call, ptr %injection, align 8
+>   %0 = load ptr, ptr %injection, align 8
+>   store ptr %0, ptr %s, align 8
+>   %1 = load ptr, ptr %s, align 8
+>   store ptr %1, ptr %b, align 8
+>   %2 = load ptr, ptr %b, align 8
+>   call void @broadcast(ptr noundef %2)
+>   store i32 1, ptr %a, align 4
+>   store ptr %a, ptr %p, align 8
+>   %3 = load ptr, ptr %p, align 8
+>   store i32 3, ptr %3, align 4
+>   %4 = load i32, ptr %a, align 4
+>   %cmp = icmp eq i32 %4, 3
+>   call void @svf_assert(i1 noundef zeroext %cmp)
+>   store i32 0, ptr %i, align 4
+>   br label %while.cond
+42,45c44,47
+< 16:                                               ; preds = %19, %0
+<   %17 = load i32, ptr %8, align 4
+<   %18 = icmp slt i32 %17, 5
+<   br i1 %18, label %19, label %24
+---
+> while.cond:                                       ; preds = %while.body, %entry
+>   %5 = load i32, ptr %i, align 4
+>   %cmp1 = icmp slt i32 %5, 5
+>   br i1 %cmp1, label %while.body, label %while.end
+47,54c49,56
+< 19:                                               ; preds = %16
+<   %20 = load i32, ptr %8, align 4
+<   %21 = add nsw i32 %20, 1
+<   store i32 %21, ptr %8, align 4
+<   %22 = sext i32 %21 to i64
+<   %23 = getelementptr inbounds [5 x i32], ptr %7, i64 0, i64 %22
+<   store i32 10, ptr %23, align 4
+<   br label %16, !llvm.loop !6
+---
+> while.body:                                       ; preds = %while.cond
+>   %6 = load i32, ptr %i, align 4
+>   %inc = add nsw i32 %6, 1
+>   store i32 %inc, ptr %i, align 4
+>   %idxprom = sext i32 %inc to i64
+>   %arrayidx = getelementptr inbounds [5 x i32], ptr %arr, i64 0, i64 %idxprom
+>   store i32 10, ptr %arrayidx, align 4
+>   br label %while.cond, !llvm.loop !6
+56c58
+< 24:                                               ; preds = %16
+---
+> while.end:                                        ; preds = %while.cond

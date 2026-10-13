@@ -1,0 +1,11 @@
+1c1
+< ; ModuleID = 'andersen.c'
+---
+> ; ModuleID = 'andersen.optnone.ll'
+14,15d13
+<   %p = alloca ptr, align 8
+<   %q = alloca ptr, align 8
+22d19
+<   store ptr %0, ptr %p, align 8
+25d21
+<   store ptr %1, ptr %q, align 8

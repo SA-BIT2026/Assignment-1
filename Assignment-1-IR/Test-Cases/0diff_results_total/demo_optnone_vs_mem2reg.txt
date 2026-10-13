@@ -1,0 +1,45 @@
+1c1
+< ; ModuleID = 'demo.c'
+---
+> ; ModuleID = 'demo.optnone.ll'
+17,22d16
+<   %retval = alloca i32, align 4
+<   %injection = alloca ptr, align 8
+<   %s = alloca ptr, align 8
+<   %b = alloca ptr, align 8
+<   %p = alloca ptr, align 8
+<   %a = alloca i32, align 4
+24,25d17
+<   %i = alloca i32, align 4
+<   store i32 0, ptr %retval, align 4
+27,39c19,20
+<   store ptr %call, ptr %injection, align 8
+<   %0 = load ptr, ptr %injection, align 8
+<   store ptr %0, ptr %s, align 8
+<   %1 = load ptr, ptr %s, align 8
+<   store ptr %1, ptr %b, align 8
+<   %2 = load ptr, ptr %b, align 8
+<   call void @broadcast(ptr noundef %2)
+<   store i32 1, ptr %a, align 4
+<   store ptr %a, ptr %p, align 8
+<   %3 = load ptr, ptr %p, align 8
+<   store i32 3, ptr %3, align 4
+<   %4 = load i32, ptr %a, align 4
+<   %cmp = icmp eq i32 %4, 3
+---
+>   call void @broadcast(ptr noundef %call)
+>   %cmp = icmp eq i32 3, 3
+41d21
+<   store i32 0, ptr %i, align 4
+45,46c25,26
+<   %5 = load i32, ptr %i, align 4
+<   %cmp1 = icmp slt i32 %5, 5
+---
+>   %i.0 = phi i32 [ 0, %entry ], [ %inc, %while.body ]
+>   %cmp1 = icmp slt i32 %i.0, 5
+50,52c30
+<   %6 = load i32, ptr %i, align 4
+<   %inc = add nsw i32 %6, 1
+<   store i32 %inc, ptr %i, align 4
+---
+>   %inc = add nsw i32 %i.0, 1
