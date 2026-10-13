@@ -36,9 +36,18 @@ int main(int argc, char** argv)
     cout << "Generating SVFIR(PAG), call graph and ICFG ..." << endl;
 
     // TODO: here, generate SVFIR(PAG), call graph and ICFG, and dump them to files
-    //@{
+    SVFIR* pag = builder.build();
+    pag->dump("pag");
 
-    //@}
+    CallGraph* callGraph = pag->getCallGraph();
+    callGraph->dump("callgraph");
+
+    ICFG* icfg = pag->getICFG();
+    icfg->dump("icfg");
+
+    SVFIR::releaseSVFIR();
+    LLVMModuleSet::releaseLLVMModuleSet();
+    delete[] arg_value;
 
     return 0;
 }

@@ -1,0 +1,42 @@
+digraph "SVFIR" {
+	label="SVFIR";
+
+	Node0x59ddc94601d0 [shape=record,shape=box,label="{ConstNullPtrValVar ID: 0\n ptr null \{ constant data \}}"];
+	Node0x59ddc94601d0 -> Node0x59ddc94b7290[color=black];
+	Node0x59ddc94b7290 [shape=record,shape=diamond,label="{DummyValVar ID: 1}"];
+	Node0x59ddc9468570 [shape=record,shape=box3d,label="{DummyObjVar ID: 2}"];
+	Node0x59ddc9449970 [shape=record,shape=box3d,label="{DummyObjVar ID: 3}"];
+	Node0x59ddc94723e0 [shape=record,shape=box,label="{[add] FunValVar ID: 4\nadd}"];
+	Node0x59ddc9453c50 [shape=record,shape=box3d,label="{[add] FunObjVar ID: 5 (base object)\nadd}"];
+	Node0x59ddc9453c50 -> Node0x59ddc94723e0[color=green];
+	Node0x59ddc94b7d40 [shape=record,shape=box,label="{[add] RetValPN ID: 6 unique return node for function add}"];
+	Node0x59ddc948b8d0 [shape=record,shape=box,label="{[add] ArgValVar ID: 7\n i32 %0 \{ 0th arg add  \}}"];
+	Node0x59ddc948b8d0 -> Node0x59ddc9460360[color=blue];
+	Node0x59ddc945c020 [shape=record,shape=box,label="{[add] ArgValVar ID: 8\n i32 %1 \{ 1st arg add  \}}"];
+	Node0x59ddc945c020 -> Node0x59ddc945e790[color=blue];
+	Node0x59ddc9460360 [shape=record,shape=box,label="{[add] ValVar ID: 9\n   %3 = alloca i32, align 4 }"];
+	Node0x59ddc9460360 -> Node0x59ddc94ba750[color=red];
+	Node0x59ddc94725b0 [shape=record,shape=box3d,label="{[add] StackObjVar ID: 10\n   %3 = alloca i32, align 4 }"];
+	Node0x59ddc94725b0 -> Node0x59ddc9460360[color=green];
+	Node0x59ddc9473a20 [shape=record,shape=box,label="{ConstIntValVar ID: 11\n i32 1 \{ constant data \}}"];
+	Node0x59ddc9471540 [shape=record,shape=box3d,label="{ConstIntObjVar ID: 12\n i32 1 \{ constant data \}}"];
+	Node0x59ddc945e790 [shape=record,shape=box,label="{[add] ValVar ID: 13\n   %4 = alloca i32, align 4 }"];
+	Node0x59ddc945e790 -> Node0x59ddc9473850[color=red];
+	Node0x59ddc9468910 [shape=record,shape=box3d,label="{[add] StackObjVar ID: 14\n   %4 = alloca i32, align 4 }"];
+	Node0x59ddc9468910 -> Node0x59ddc945e790[color=green];
+	Node0x59ddc9472ec0 [shape=record,shape=box,label="{[add] ValVar ID: 15\n   %5 = alloca i32, align 4 }"];
+	Node0x59ddc9472ec0 -> Node0x59ddc948bb20[color=red];
+	Node0x59ddc945a480 [shape=record,shape=box3d,label="{[add] StackObjVar ID: 16\n   %5 = alloca i32, align 4 }"];
+	Node0x59ddc945a480 -> Node0x59ddc9472ec0[color=green];
+	Node0x59ddc94ba920 [shape=record,shape=box,label="{[add] ValVar ID: 17\n   store i32 %0, ptr %3, align 4 }"];
+	Node0x59ddc9473660 [shape=record,shape=box,label="{[add] ValVar ID: 18\n   store i32 %1, ptr %4, align 4 }"];
+	Node0x59ddc94ba750 [shape=record,shape=box,label="{[add] ValVar ID: 19\n   %6 = load i32, ptr %3, align 4 }"];
+	Node0x59ddc94ba750 -> Node0x59ddc948b470[color=grey];
+	Node0x59ddc9473850 [shape=record,shape=box,label="{[add] ValVar ID: 20\n   %7 = load i32, ptr %4, align 4 }"];
+	Node0x59ddc948b470 [shape=record,shape=box,label="{[add] ValVar ID: 21\n   %8 = add nsw i32 %6, %7 }"];
+	Node0x59ddc948b470 -> Node0x59ddc9472ec0[color=blue];
+	Node0x59ddc9472b20 [shape=record,shape=box,label="{[add] ValVar ID: 22\n   store i32 %8, ptr %5, align 4 }"];
+	Node0x59ddc948bb20 [shape=record,shape=box,label="{[add] ValVar ID: 23\n   %9 = load i32, ptr %5, align 4 }"];
+	Node0x59ddc948bb20 -> Node0x59ddc94b7d40[color=grey];
+	Node0x59ddc9456f80 [shape=record,shape=box,label="{[add] ValVar ID: 24\n   ret i32 %9 }"];
+}
