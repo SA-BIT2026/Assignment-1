@@ -1,0 +1,41 @@
+digraph "ICFG" {
+	label="ICFG";
+
+	Node0x639dd6311860 [shape=record,color=purple,label="{GlobalICFGNode0\nCopyStmt: [Var1 \<-- Var0]  \nConstNullPtrValVar ID: 0\n ptr null \{ constant data \}\nAddrStmt: [Var9 \<-- Var10]  \nConstIntValVar ID: 9\n i32 1 \{ constant data \}\nAddrStmt: [Var23 \<-- Var24]  \nConstIntValVar ID: 23\n i32 0 \{ constant data \}\nAddrStmt: [Var4 \<-- Var5]  \nFunValVar ID: 4\nmain\nAddrStmt: [Var37 \<-- Var38]  \nFunValVar ID: 37\nllvm.dbg.declare}"];
+	Node0x639dd6311860 -> Node0x639dd6337d10[style=solid];
+	Node0x639dd6337d10 [shape=record,color=yellow,label="{FunEntryICFGNode1 \{fun: main\{ \"ln\": 5, \"file\": \"andersen.c\" \}\}}"];
+	Node0x639dd6337d10 -> Node0x639dd6354ea0[style=solid];
+	Node0x639dd62ea7d0 [shape=record,color=green,label="{FunExitICFGNode2 \{fun: main\{ \"ln\": 6, \"fl\": \"andersen.c\" \}\}\nPhiStmt: [Var6 \<-- ([Var23, ICFGNode18],)]  \nValVar ID: 36\n   ret i32 0, !dbg !36 \{ \"ln\": 12, \"cl\": 1, \"fl\": \"andersen.c\" \}}"];
+	Node0x639dd6354ea0 [shape=record,color=black,label="{IntraICFGNode3 \{fun: main\{ \"ln\": 6, \"fl\": \"andersen.c\" \}\}\nAddrStmt: [Var7 \<-- Var8]  \nValVar ID: 7\n   %s = alloca %struct.S, align 8 \{ \"ln\": 6, \"fl\": \"andersen.c\" \}}"];
+	Node0x639dd6354ea0 -> Node0x639dd62fb860[style=solid];
+	Node0x639dd62fb860 [shape=record,color=black,label="{IntraICFGNode4 \{fun: main\{ \"ln\": 7, \"fl\": \"andersen.c\" \}\}\nAddrStmt: [Var11 \<-- Var12]  \nValVar ID: 11\n   %a1 = alloca i32, align 4 \{ \"ln\": 7, \"fl\": \"andersen.c\" \}}"];
+	Node0x639dd62fb860 -> Node0x639dd635b9e0[style=solid];
+	Node0x639dd635b9e0 [shape=record,color=black,label="{IntraICFGNode5 \{fun: main\{ \"ln\": 7, \"fl\": \"andersen.c\" \}\}\nAddrStmt: [Var13 \<-- Var14]  \nValVar ID: 13\n   %a2 = alloca i32, align 4 \{ \"ln\": 7, \"fl\": \"andersen.c\" \}}"];
+	Node0x639dd635b9e0 -> Node0x639dd6322960[style=solid];
+	Node0x639dd6322960 [shape=record,color=black,label="{IntraICFGNode6 \{fun: main\{ \"ln\": 10, \"fl\": \"andersen.c\" \}\}\nAddrStmt: [Var15 \<-- Var16]  \nValVar ID: 15\n   %p = alloca ptr, align 8 \{ \"ln\": 10, \"fl\": \"andersen.c\" \}}"];
+	Node0x639dd6322960 -> Node0x639dd6354950[style=solid];
+	Node0x639dd6354950 [shape=record,color=black,label="{IntraICFGNode7 \{fun: main\{ \"ln\": 11, \"fl\": \"andersen.c\" \}\}\nAddrStmt: [Var17 \<-- Var18]  \nValVar ID: 17\n   %q = alloca ptr, align 8 \{ \"ln\": 11, \"fl\": \"andersen.c\" \}}"];
+	Node0x639dd6354950 -> Node0x639dd62eca40[style=solid];
+	Node0x639dd62eca40 [shape=record,color=black,label="{IntraICFGNode8 \{fun: main\{ \"ln\": 8, \"cl\": 3, \"fl\": \"andersen.c\" \}\}\nGepStmt: [Var22 \<-- Var7]  \nValVar ID: 22\n   %f1 = getelementptr inbounds %struct.S, ptr %s, i32 0, i32 0, !dbg !26 \{ \"ln\": 8, \"cl\": 3, \"fl\": \"andersen.c\" \}}"];
+	Node0x639dd62eca40 -> Node0x639dd6304e20[style=solid];
+	Node0x639dd6304e20 [shape=record,color=black,label="{IntraICFGNode9 \{fun: main\{ \"ln\": 8, \"cl\": 6, \"fl\": \"andersen.c\" \}\}\nStoreStmt: [Var22 \<-- Var11]  \nValVar ID: 25\n   store ptr %a1, ptr %f1, align 8, !dbg !27 \{ \"ln\": 8, \"cl\": 6, \"fl\": \"andersen.c\" \}}"];
+	Node0x639dd6304e20 -> Node0x639dd62f1c50[style=solid];
+	Node0x639dd62f1c50 [shape=record,color=black,label="{IntraICFGNode10 \{fun: main\{ \"ln\": 9, \"cl\": 3, \"fl\": \"andersen.c\" \}\}\nGepStmt: [Var26 \<-- Var7]  \nValVar ID: 26\n   %f2 = getelementptr inbounds %struct.S, ptr %s, i32 0, i32 1, !dbg !28 \{ \"ln\": 9, \"cl\": 3, \"fl\": \"andersen.c\" \}}"];
+	Node0x639dd62f1c50 -> Node0x639dd6325830[style=solid];
+	Node0x639dd6325830 [shape=record,color=black,label="{IntraICFGNode11 \{fun: main\{ \"ln\": 9, \"cl\": 6, \"fl\": \"andersen.c\" \}\}\nStoreStmt: [Var26 \<-- Var13]  \nValVar ID: 27\n   store ptr %a2, ptr %f2, align 8, !dbg !29 \{ \"ln\": 9, \"cl\": 6, \"fl\": \"andersen.c\" \}}"];
+	Node0x639dd6325830 -> Node0x639dd63259a0[style=solid];
+	Node0x639dd63259a0 [shape=record,color=black,label="{IntraICFGNode12 \{fun: main\{ \"ln\": 10, \"cl\": 12, \"fl\": \"andersen.c\" \}\}\nGepStmt: [Var29 \<-- Var7]  \nValVar ID: 29\n   %f11 = getelementptr inbounds %struct.S, ptr %s, i32 0, i32 0, !dbg !32 \{ \"ln\": 10, \"cl\": 12, \"fl\": \"andersen.c\" \}}"];
+	Node0x639dd63259a0 -> Node0x639dd6325b10[style=solid];
+	Node0x639dd6325b10 [shape=record,color=black,label="{IntraICFGNode13 \{fun: main\{ \"ln\": 10, \"cl\": 12, \"fl\": \"andersen.c\" \}\}\nLoadStmt: [Var30 \<-- Var29]  \nValVar ID: 30\n   %0 = load ptr, ptr %f11, align 8, !dbg !32 \{ \"ln\": 10, \"cl\": 12, \"fl\": \"andersen.c\" \}}"];
+	Node0x639dd6325b10 -> Node0x639dd62e4e60[style=solid];
+	Node0x639dd62e4e60 [shape=record,color=black,label="{IntraICFGNode14 \{fun: main\{ \"ln\": 10, \"cl\": 6, \"fl\": \"andersen.c\" \}\}\nStoreStmt: [Var15 \<-- Var30]  \nValVar ID: 31\n   store ptr %0, ptr %p, align 8, !dbg !31 \{ \"ln\": 10, \"cl\": 6, \"fl\": \"andersen.c\" \}}"];
+	Node0x639dd62e4e60 -> Node0x639dd6326150[style=solid];
+	Node0x639dd6326150 [shape=record,color=black,label="{IntraICFGNode15 \{fun: main\{ \"ln\": 11, \"cl\": 12, \"fl\": \"andersen.c\" \}\}\nGepStmt: [Var33 \<-- Var7]  \nValVar ID: 33\n   %f22 = getelementptr inbounds %struct.S, ptr %s, i32 0, i32 1, !dbg !35 \{ \"ln\": 11, \"cl\": 12, \"fl\": \"andersen.c\" \}}"];
+	Node0x639dd6326150 -> Node0x639dd6329d90[style=solid];
+	Node0x639dd6329d90 [shape=record,color=black,label="{IntraICFGNode16 \{fun: main\{ \"ln\": 11, \"cl\": 12, \"fl\": \"andersen.c\" \}\}\nLoadStmt: [Var34 \<-- Var33]  \nValVar ID: 34\n   %1 = load ptr, ptr %f22, align 8, !dbg !35 \{ \"ln\": 11, \"cl\": 12, \"fl\": \"andersen.c\" \}}"];
+	Node0x639dd6329d90 -> Node0x639dd6307b10[style=solid];
+	Node0x639dd6307b10 [shape=record,color=black,label="{IntraICFGNode17 \{fun: main\{ \"ln\": 11, \"cl\": 6, \"fl\": \"andersen.c\" \}\}\nStoreStmt: [Var17 \<-- Var34]  \nValVar ID: 35\n   store ptr %1, ptr %q, align 8, !dbg !34 \{ \"ln\": 11, \"cl\": 6, \"fl\": \"andersen.c\" \}}"];
+	Node0x639dd6307b10 -> Node0x639dd62fdd80[style=solid];
+	Node0x639dd62fdd80 [shape=record,color=black,label="{IntraICFGNode18 \{fun: main\{ \"ln\": 12, \"cl\": 1, \"fl\": \"andersen.c\" \}\}\n   ret i32 0, !dbg !36 \{ \"ln\": 12, \"cl\": 1, \"fl\": \"andersen.c\" \}}"];
+	Node0x639dd62fdd80 -> Node0x639dd62ea7d0[style=solid];
+}
