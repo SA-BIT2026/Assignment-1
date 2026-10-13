@@ -37,7 +37,18 @@ int main(int argc, char** argv)
 
     // TODO: here, generate SVFIR(PAG), call graph and ICFG, and dump them to files
     //@{
+    // build() 会把 SVFIR(PAG)、ICFG 和调用图一起建好
+    SVFIR* pag = builder.build();
 
+    // 三个图分别导出成 dot，用 Graphviz 画
+    CallGraph* callgraph = pag->getCallGraph();
+    ICFG* icfg = pag->getICFG();
+
+    pag->dump("pag");
+    callgraph->dump("callgraph");
+    icfg->dump("icfg");
+
+    cout << "Generated pag.dot, callgraph.dot and icfg.dot" << endl;
     //@}
 
     return 0;
