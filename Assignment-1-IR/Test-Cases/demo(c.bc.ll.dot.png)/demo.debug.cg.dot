@@ -1,0 +1,12 @@
+digraph "Call Graph" {
+	label="Call Graph";
+
+	Node0x615b8393a390 [shape=record,shape=box,label="{CallGraphNode ID: 0 \{fun: tgetstr\}}"];
+	Node0x615b839429e0 [shape=record,shape=box,label="{CallGraphNode ID: 1 \{fun: main\}|{<s0>1|<s1>2|<s2>3}}"];
+	Node0x615b839429e0:s0 -> Node0x615b8393a390[color=black];
+	Node0x615b839429e0:s1 -> Node0x615b8394d950[color=black];
+	Node0x615b839429e0:s2 -> Node0x615b838f3570[color=black];
+	Node0x615b8394cff0 [shape=record,shape=Mrecord,label="{CallGraphNode ID: 2 \{fun: llvm.dbg.declare\}}"];
+	Node0x615b8394d950 [shape=record,shape=Mrecord,label="{CallGraphNode ID: 3 \{fun: broadcast\}}"];
+	Node0x615b838f3570 [shape=record,shape=Mrecord,label="{CallGraphNode ID: 4 \{fun: svf_assert\}}"];
+}

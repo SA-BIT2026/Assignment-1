@@ -1,0 +1,22 @@
+7,11c7,12
+< define dso_local i32 @foo(i32 noundef %0) #0 {
+<   %2 = alloca i32, align 4
+<   store i32 %0, ptr %2, align 4
+<   %3 = load i32, ptr %2, align 4
+<   ret i32 %3
+---
+> define dso_local i32 @foo(i32 noundef %b) #0 {
+> entry:
+>   %b.addr = alloca i32, align 4
+>   store i32 %b, ptr %b.addr, align 4
+>   %0 = load i32, ptr %b.addr, align 4
+>   ret i32 %0
+16,18c17,20
+<   %1 = alloca i32, align 4
+<   %2 = call i32 @foo(i32 noundef 0)
+<   store i32 %2, ptr %1, align 4
+---
+> entry:
+>   %a = alloca i32, align 4
+>   %call = call i32 @foo(i32 noundef 0)
+>   store i32 %call, ptr %a, align 4

@@ -1,0 +1,41 @@
+digraph "SVFIR" {
+	label="SVFIR";
+
+	Node0x558956a02a70 [shape=record,shape=box,label="{ConstNullPtrValVar ID: 0\n ptr null \{ constant data \}}"];
+	Node0x558956a02a70 -> Node0x5589569fb120[color=black];
+	Node0x5589569fb120 [shape=record,shape=diamond,label="{DummyValVar ID: 1}"];
+	Node0x558956a22b40 [shape=record,shape=box3d,label="{DummyObjVar ID: 2}"];
+	Node0x5589569faf50 [shape=record,shape=box3d,label="{DummyObjVar ID: 3}"];
+	Node0x558956a53bc0 [shape=record,shape=box,label="{[foo] FunValVar ID: 4\nfoo}"];
+	Node0x558956a1c8b0 [shape=record,shape=box3d,label="{[foo] FunObjVar ID: 5 (base object)\nfoo}"];
+	Node0x558956a1c8b0 -> Node0x558956a53bc0[color=green];
+	Node0x5589569fad80 [shape=record,shape=box,label="{[foo] RetValPN ID: 6 unique return node for function foo|{<s0>CallICFGNode: |<s1>CallICFGNode: }}"];
+	Node0x5589569fad80:s0 -> Node0x558956a53d20[color=black,style=dotted];
+	Node0x5589569fad80:s1 -> Node0x558956a22cb0[color=black,style=dotted];
+	Node0x558956a26c50 [shape=record,shape=box,label="{[foo] ArgValVar ID: 7\n i32 %p \{ 0th arg foo  \}}"];
+	Node0x558956a26c50 -> Node0x5589569fad80[color=grey];
+	Node0x558956a232f0 [shape=record,shape=box,label="{[foo] ValVar ID: 8\n   ret i32 %p }"];
+	Node0x5589569e3d10 [shape=record,shape=box,label="{[main] FunValVar ID: 9\nmain}"];
+	Node0x558956a0fc80 [shape=record,shape=box3d,label="{[main] FunObjVar ID: 10 (base object)\nmain}"];
+	Node0x558956a0fc80 -> Node0x5589569e3d10[color=green];
+	Node0x558956a0e270 [shape=record,shape=box,label="{[main] RetValPN ID: 11 unique return node for function main}"];
+	Node0x558956a33170 [shape=record,shape=box,label="{[main] ArgValVar ID: 12\n i32 %argc \{ 0th arg main  \}|{<s0>CallICFGNode: }}"];
+	Node0x558956a33170:s0 -> Node0x558956a26c50[color=black,style=dashed];
+	Node0x558956a53d20 [shape=record,shape=box,label="{[main] ValVar ID: 13\n   %call = call i32 @foo(i32 noundef 3) }"];
+	Node0x5589569fa220 [shape=record,shape=box,label="{ConstIntValVar ID: 14\n i32 3 \{ constant data \}|{<s0>CallICFGNode: }}"];
+	Node0x5589569fa220:s0 -> Node0x558956a26c50[color=black,style=dashed];
+	Node0x558956a0e830 [shape=record,shape=box3d,label="{ConstIntObjVar ID: 15\n i32 3 \{ constant data \}}"];
+	Node0x558956a22cb0 [shape=record,shape=box,label="{[main] ValVar ID: 16\n   %call1 = call i32 @foo(i32 noundef %argc) }"];
+	Node0x558956a22cb0 -> Node0x5589569fabb0[color=grey];
+	Node0x5589569fabb0 [shape=record,shape=box,label="{[main] ValVar ID: 17\n   %cmp = icmp eq i32 %call1, %argc }"];
+	Node0x558956a52c90 [shape=record,shape=box,label="{[main] ValVar ID: 18\n   call void @svf_assert(i1 noundef zeroext %cmp) }"];
+	Node0x558956a0e0a0 [shape=record,shape=box,label="{[svf_assert] FunValVar ID: 19\nsvf_assert}"];
+	Node0x558956a38840 [shape=record,shape=box3d,label="{[svf_assert] FunObjVar ID: 20 (base object)\nsvf_assert}"];
+	Node0x558956a38840 -> Node0x558956a0e0a0[color=green];
+	Node0x5589569f65e0 [shape=record,shape=box,label="{[main] ValVar ID: 21\n   ret i32 0 }"];
+	Node0x558956a02fe0 [shape=record,shape=box,label="{ConstIntValVar ID: 22\n i32 0 \{ constant data \}}"];
+	Node0x558956a02fe0 -> Node0x558956a0e270[color=grey];
+	Node0x5589569f9e80 [shape=record,shape=box3d,label="{ConstIntObjVar ID: 23\n i32 0 \{ constant data \}}"];
+	Node0x5589569efad0 [shape=record,shape=box,label="{[svf_assert] RetValPN ID: 24 unique return node for function svf_assert}"];
+	Node0x5589569ef030 [shape=record,shape=box,label="{[svf_assert] ArgValVar ID: 25\n i1 %0 \{ 0th arg svf_assert  \}}"];
+}

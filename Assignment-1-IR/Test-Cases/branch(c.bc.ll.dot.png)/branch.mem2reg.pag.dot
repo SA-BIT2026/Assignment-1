@@ -1,0 +1,45 @@
+digraph "SVFIR" {
+	label="SVFIR";
+
+	Node0x5be3a3850650 [shape=record,shape=box,label="{ConstNullPtrValVar ID: 0\n ptr null \{ constant data \}}"];
+	Node0x5be3a3850650 -> Node0x5be3a3848750[color=black];
+	Node0x5be3a3850650 -> Node0x5be3a3848e90[color=grey];
+	Node0x5be3a3850650 -> Node0x5be3a383b200[color=grey];
+	Node0x5be3a3848750 [shape=record,shape=diamond,label="{DummyValVar ID: 1}"];
+	Node0x5be3a3871290 [shape=record,shape=box3d,label="{DummyObjVar ID: 2}"];
+	Node0x5be3a3848580 [shape=record,shape=box3d,label="{DummyObjVar ID: 3}"];
+	Node0x5be3a3843a80 [shape=record,shape=box,label="{[main] FunValVar ID: 4\nmain}"];
+	Node0x5be3a386a940 [shape=record,shape=box3d,label="{[main] FunObjVar ID: 5 (base object)\nmain}"];
+	Node0x5be3a386a940 -> Node0x5be3a3843a80[color=green];
+	Node0x5be3a38407f0 [shape=record,shape=box,label="{[main] RetValPN ID: 6 unique return node for function main}"];
+	Node0x5be3a38a3150 [shape=record,shape=box,label="{[main] ArgValVar ID: 7\n i32 %x \{ 0th arg main  \}}"];
+	Node0x5be3a38a3150 -> Node0x5be3a3848960[color=grey];
+	Node0x5be3a38a3150 -> Node0x5be3a38494a0[color=grey];
+	Node0x5be3a38a3150 -> Node0x5be3a3850850[color=grey];
+	Node0x5be3a3848960 [shape=record,shape=box,label="{[main] ValVar ID: 8\n   %cmp = icmp sgt i32 %x, 10 }"];
+	Node0x5be3a3848960 -> Node0x5be3a3846a70[color=grey];
+	Node0x5be3a3851a70 [shape=record,shape=box,label="{ConstIntValVar ID: 9\n i32 10 \{ constant data \}}"];
+	Node0x5be3a38a0cb0 [shape=record,shape=box3d,label="{ConstIntObjVar ID: 10\n i32 10 \{ constant data \}}"];
+	Node0x5be3a3846a70 [shape=record,shape=box,label="{[main] ValVar ID: 11\n   br i1 %cmp, label %if.then, label %if.else }"];
+	Node0x5be3a38494a0 [shape=record,shape=box,label="{[main] ValVar ID: 12\n   %add = add nsw i32 %x, 1 }"];
+	Node0x5be3a38494a0 -> Node0x5be3a3849650[color=grey];
+	Node0x5be3a3848cc0 [shape=record,shape=box,label="{ConstIntValVar ID: 13\n i32 1 \{ constant data \}}"];
+	Node0x5be3a38a0340 [shape=record,shape=box3d,label="{ConstIntObjVar ID: 14\n i32 1 \{ constant data \}}"];
+	Node0x5be3a3848e90 [shape=record,shape=box,label="{[main] ValVar ID: 15\n   br label %if.end }"];
+	Node0x5be3a38337b0 [shape=record,shape=box,label="{ValVar ID: 16\n \nif.end:                                           ; preds = %if.else, %if.then\n  %y.0 = phi i32 [ %add, %if.then ], [ 10, %if.else ]\n  %add1 = add nsw i32 %x, 1\n  %cmp2 = icmp sge i32 %y.0, %add1\n  call void @svf_assert(i1 noundef zeroext %cmp2)\n  ret i32 0\n \{ \"basic block\": if.end, \"location\":  \}}"];
+	Node0x5be3a383b200 [shape=record,shape=box,label="{[main] ValVar ID: 17\n   br label %if.end }"];
+	Node0x5be3a3849650 [shape=record,shape=box,label="{[main] ValVar ID: 18\n   %y.0 = phi i32 [ %add, %if.then ], [ 10, %if.else ] }"];
+	Node0x5be3a3849650 -> Node0x5be3a3849820[color=grey];
+	Node0x5be3a3850850 [shape=record,shape=box,label="{[main] ValVar ID: 19\n   %add1 = add nsw i32 %x, 1 }"];
+	Node0x5be3a3849820 [shape=record,shape=box,label="{[main] ValVar ID: 20\n   %cmp2 = icmp sge i32 %y.0, %add1 }"];
+	Node0x5be3a3846d30 [shape=record,shape=box,label="{[main] ValVar ID: 21\n   call void @svf_assert(i1 noundef zeroext %cmp2) }"];
+	Node0x5be3a38a49c0 [shape=record,shape=box,label="{[svf_assert] FunValVar ID: 22\nsvf_assert}"];
+	Node0x5be3a385e900 [shape=record,shape=box3d,label="{[svf_assert] FunObjVar ID: 23 (base object)\nsvf_assert}"];
+	Node0x5be3a385e900 -> Node0x5be3a38a49c0[color=green];
+	Node0x5be3a38499f0 [shape=record,shape=box,label="{[main] ValVar ID: 24\n   ret i32 0 }"];
+	Node0x5be3a3839a40 [shape=record,shape=box,label="{ConstIntValVar ID: 25\n i32 0 \{ constant data \}}"];
+	Node0x5be3a3839a40 -> Node0x5be3a38407f0[color=grey];
+	Node0x5be3a389ff90 [shape=record,shape=box3d,label="{ConstIntObjVar ID: 26\n i32 0 \{ constant data \}}"];
+	Node0x5be3a3851c80 [shape=record,shape=box,label="{[svf_assert] RetValPN ID: 27 unique return node for function svf_assert}"];
+	Node0x5be3a38483b0 [shape=record,shape=box,label="{[svf_assert] ArgValVar ID: 28\n i1 %0 \{ 0th arg svf_assert  \}}"];
+}

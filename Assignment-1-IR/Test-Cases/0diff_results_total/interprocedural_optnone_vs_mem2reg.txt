@@ -1,0 +1,27 @@
+1c1
+< ; ModuleID = 'interprocedural.c'
+---
+> ; ModuleID = 'interprocedural.optnone.ll'
+9,12c9
+<   %p.addr = alloca i32, align 4
+<   store i32 %p, ptr %p.addr, align 4
+<   %0 = load i32, ptr %p.addr, align 4
+<   ret i32 %0
+---
+>   ret i32 %p
+18,21d14
+<   %argc.addr = alloca i32, align 4
+<   %x = alloca i32, align 4
+<   %y = alloca i32, align 4
+<   store i32 %argc, ptr %argc.addr, align 4
+23,29c16,17
+<   store i32 %call, ptr %x, align 4
+<   %0 = load i32, ptr %argc.addr, align 4
+<   %call1 = call i32 @foo(i32 noundef %0)
+<   store i32 %call1, ptr %y, align 4
+<   %1 = load i32, ptr %y, align 4
+<   %2 = load i32, ptr %argc.addr, align 4
+<   %cmp = icmp eq i32 %1, %2
+---
+>   %call1 = call i32 @foo(i32 noundef %argc)
+>   %cmp = icmp eq i32 %call1, %argc
