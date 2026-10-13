@@ -1,0 +1,12 @@
+digraph "ICFG" {
+	label="ICFG";
+
+	Node0x5fee518a2eb0 [shape=record,color=purple,label="{GlobalICFGNode0\nCopyStmt: [Var1 \<-- Var0]  \nConstNullPtrValVar ID: 0\n ptr null \{ constant data \}\nAddrStmt: [Var4 \<-- Var5]  \nFunValVar ID: 4\nadd}"];
+	Node0x5fee518ca5f0 [shape=record,color=yellow,label="{FunEntryICFGNode1 \{fun: add\}}"];
+	Node0x5fee518ca5f0 -> Node0x5fee518c0870[style=solid];
+	Node0x5fee51880ec0 [shape=record,color=green,label="{FunExitICFGNode2 \{fun: add\}\nPhiStmt: [Var6 \<-- ([Var9, ICFGNode4],)]  \nValVar ID: 10\n   ret i32 %add }"];
+	Node0x5fee518c0870 [shape=record,color=black,label="{IntraICFGNode3 \{fun: add\}\nBinaryOPStmt: [Var9 \<-- (Var7 opcode13 Var8)]  \nValVar ID: 9\n   %add = add nsw i32 %a, %b }"];
+	Node0x5fee518c0870 -> Node0x5fee518820f0[style=solid];
+	Node0x5fee518820f0 [shape=record,color=black,label="{IntraICFGNode4 \{fun: add\}\n   ret i32 %add }"];
+	Node0x5fee518820f0 -> Node0x5fee51880ec0[style=solid];
+}
