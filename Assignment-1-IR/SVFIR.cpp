@@ -38,7 +38,26 @@ int main(int argc, char** argv)
     // TODO: here, generate SVFIR(PAG), call graph and ICFG, and dump them to files
     //@{
 
-    //@}
 
+    // Construct the program representation.
+    SVFIR* pag = builder.build();
+
+    // Export the graph representations for later inspection.
+    if (pag != nullptr)
+    {
+        pag->dump("svfir.dot");
+
+        auto* controlFlowGraph = pag->getICFG();
+        auto* functionCallGraph = pag->getCallGraph();
+
+        if (controlFlowGraph != nullptr)
+            controlFlowGraph->dump("icfg.dot");
+
+        if (functionCallGraph != nullptr)
+            functionCallGraph->dump("callgraph.dot");
+    }
+
+
+    //@}
     return 0;
 }
