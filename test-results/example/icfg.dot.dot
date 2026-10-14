@@ -1,0 +1,31 @@
+digraph "ICFG" {
+	label="ICFG";
+
+	Node0x5c49a8b0e9e0 [shape=record,color=purple,label="{GlobalICFGNode0\nCopyStmt: [Var1 \<-- Var0]  \nConstNullPtrValVar ID: 0\n ptr null \{ constant data \}\nAddrStmt: [Var10 \<-- Var11]  \nConstIntValVar ID: 10\n i32 1 \{ constant data \}\nAddrStmt: [Var29 \<-- Var30]  \nConstIntValVar ID: 29\n i32 0 \{ constant data \}\nAddrStmt: [Var4 \<-- Var5]  \nFunValVar ID: 4\nfoo\nAddrStmt: [Var16 \<-- Var17]  \nFunValVar ID: 16\nllvm.dbg.declare\nAddrStmt: [Var22 \<-- Var23]  \nFunValVar ID: 22\nmain}"];
+	Node0x5c49a8b0e9e0 -> Node0x5c49a8b04740[style=solid];
+	Node0x5c49a8b4c0d0 [shape=record,color=yellow,label="{FunEntryICFGNode1 \{fun: foo\{ \"ln\": 1, \"file\": \"Assignment-1-IR/Test-Cases/example.c\" \}\}}"];
+	Node0x5c49a8b4c0d0 -> Node0x5c49a8b1fad0[style=solid];
+	Node0x5c49a8b16f20 [shape=record,color=green,label="{FunExitICFGNode2 \{fun: foo\{ \"ln\": 1, \"fl\": \"Assignment-1-IR/Test-Cases/example.c\" \}\}\nPhiStmt: [Var6 \<-- ([Var14, ICFGNode8],)]  \nValVar ID: 15\n   ret i32 %3, !dbg !18 \{ \"ln\": 2, \"cl\": 5, \"fl\": \"Assignment-1-IR/Test-Cases/example.c\" \}|{<s0>0x5c49a8ae56b0}}"];
+	Node0x5c49a8b16f20:s0 -> Node0x5c49a8b23130[style=solid,color=blue];
+	Node0x5c49a8b04740 [shape=record,color=yellow,label="{FunEntryICFGNode3 \{fun: main\{ \"ln\": 4, \"file\": \"Assignment-1-IR/Test-Cases/example.c\" \}\}}"];
+	Node0x5c49a8b04740 -> Node0x5c49a8b22af0[style=solid];
+	Node0x5c49a8b01d60 [shape=record,color=green,label="{FunExitICFGNode4 \{fun: main\{ \"ln\": 5, \"fl\": \"Assignment-1-IR/Test-Cases/example.c\" \}\}\nPhiStmt: [Var24 \<-- ([Var29, ICFGNode13],)]  \nValVar ID: 32\n   ret i32 0, !dbg !18 \{ \"ln\": 6, \"cl\": 1, \"fl\": \"Assignment-1-IR/Test-Cases/example.c\" \}}"];
+	Node0x5c49a8b1fad0 [shape=record,color=black,label="{IntraICFGNode5 \{fun: foo\{ \"ln\": 1, \"fl\": \"Assignment-1-IR/Test-Cases/example.c\" \}\}\nAddrStmt: [Var8 \<-- Var9]  \nValVar ID: 8\n   %2 = alloca i32, align 4 \{ \"ln\": 1, \"fl\": \"Assignment-1-IR/Test-Cases/example.c\" \}}"];
+	Node0x5c49a8b1fad0 -> Node0x5c49a8af36c0[style=solid];
+	Node0x5c49a8af36c0 [shape=record,color=black,label="{IntraICFGNode6 \{fun: foo\}\nStoreStmt: [Var8 \<-- Var7]  \nValVar ID: 12\n   store i32 %0, ptr %2, align 4 }"];
+	Node0x5c49a8af36c0 -> Node0x5c49a8b22810[style=solid];
+	Node0x5c49a8b22810 [shape=record,color=black,label="{IntraICFGNode7 \{fun: foo\{ \"ln\": 2, \"cl\": 12, \"fl\": \"Assignment-1-IR/Test-Cases/example.c\" \}\}\nLoadStmt: [Var14 \<-- Var8]  \nValVar ID: 14\n   %3 = load i32, ptr %2, align 4, !dbg !17 \{ \"ln\": 2, \"cl\": 12, \"fl\": \"Assignment-1-IR/Test-Cases/example.c\" \}}"];
+	Node0x5c49a8b22810 -> Node0x5c49a8b22980[style=solid];
+	Node0x5c49a8b22980 [shape=record,color=black,label="{IntraICFGNode8 \{fun: foo\{ \"ln\": 2, \"cl\": 5, \"fl\": \"Assignment-1-IR/Test-Cases/example.c\" \}\}\n   ret i32 %3, !dbg !18 \{ \"ln\": 2, \"cl\": 5, \"fl\": \"Assignment-1-IR/Test-Cases/example.c\" \}}"];
+	Node0x5c49a8b22980 -> Node0x5c49a8b16f20[style=solid];
+	Node0x5c49a8b22af0 [shape=record,color=black,label="{IntraICFGNode9 \{fun: main\{ \"ln\": 5, \"fl\": \"Assignment-1-IR/Test-Cases/example.c\" \}\}\nAddrStmt: [Var25 \<-- Var26]  \nValVar ID: 25\n   %1 = alloca i32, align 4 \{ \"ln\": 5, \"fl\": \"Assignment-1-IR/Test-Cases/example.c\" \}}"];
+	Node0x5c49a8b22af0 -> Node0x5c49a8ae56b0[style=solid];
+	Node0x5c49a8ae56b0 [shape=record,color=red,label="{CallICFGNode10 \{fun: main\{ \"ln\": 5, \"cl\": 10, \"fl\": \"Assignment-1-IR/Test-Cases/example.c\" \}\}\nCallPE: [Var7 \<-- Var29]  \nValVar ID: 28\n   %2 = call i32 @foo(i32 noundef 0), !dbg !17 \{ \"ln\": 5, \"cl\": 10, \"fl\": \"Assignment-1-IR/Test-Cases/example.c\" \}|{<s0>0x5c49a8ae56b0}}"];
+	Node0x5c49a8ae56b0:s0 -> Node0x5c49a8b4c0d0[style=solid,color=red];
+	Node0x5c49a8b23130 [shape=record,color=blue,label="{RetICFGNode11 \{fun: main\{ \"ln\": 5, \"cl\": 10, \"fl\": \"Assignment-1-IR/Test-Cases/example.c\" \}\}\nRetPE: [Var28 \<-- Var6]  \nValVar ID: 28\n   %2 = call i32 @foo(i32 noundef 0), !dbg !17 \{ \"ln\": 5, \"cl\": 10, \"fl\": \"Assignment-1-IR/Test-Cases/example.c\" \}}"];
+	Node0x5c49a8b23130 -> Node0x5c49a8ae39a0[style=solid];
+	Node0x5c49a8ae39a0 [shape=record,color=black,label="{IntraICFGNode12 \{fun: main\{ \"ln\": 5, \"cl\": 6, \"fl\": \"Assignment-1-IR/Test-Cases/example.c\" \}\}\nStoreStmt: [Var25 \<-- Var28]  \nValVar ID: 31\n   store i32 %2, ptr %1, align 4, !dbg !16 \{ \"ln\": 5, \"cl\": 6, \"fl\": \"Assignment-1-IR/Test-Cases/example.c\" \}}"];
+	Node0x5c49a8ae39a0 -> Node0x5c49a8b040d0[style=solid];
+	Node0x5c49a8b040d0 [shape=record,color=black,label="{IntraICFGNode13 \{fun: main\{ \"ln\": 6, \"cl\": 1, \"fl\": \"Assignment-1-IR/Test-Cases/example.c\" \}\}\n   ret i32 0, !dbg !18 \{ \"ln\": 6, \"cl\": 1, \"fl\": \"Assignment-1-IR/Test-Cases/example.c\" \}}"];
+	Node0x5c49a8b040d0 -> Node0x5c49a8b01d60[style=solid];
+}
