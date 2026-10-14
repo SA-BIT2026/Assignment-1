@@ -5,6 +5,8 @@
 
 #include "Graphs/SVFG.h"
 #include "SVF-LLVM/SVFIRBuilder.h"
+#include "Util/CommandLine.h"
+#include "WPA/Andersen.h"
 
 using namespace SVF;
 using namespace llvm;
@@ -35,10 +37,17 @@ int main(int argc, char** argv)
     SVFIRBuilder builder;
     cout << "Generating SVFIR(PAG), call graph and ICFG ..." << endl;
 
-    // TODO: here, generate SVFIR(PAG), call graph and ICFG, and dump them to files
-    //@{
+   
+    SVFIR* pag = builder.build();
+    pag->dump("pag");
 
-    //@}
+    Andersen* ander = AndersenWaveDiff::createAndersenWaveDiff(pag);
+    CallGraph* callgraph = ander->getCallGraph();
+    callgraph->dump("callgraph");
+
+    ICFG* icfg = pag->getICFG();
+    icfg->dump("icfg");
+
 
     return 0;
 }
