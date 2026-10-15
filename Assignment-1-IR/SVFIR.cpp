@@ -5,6 +5,7 @@
 
 #include "Graphs/SVFG.h"
 #include "SVF-LLVM/SVFIRBuilder.h"
+#include "WPA/Andersen.h"
 
 using namespace SVF;
 using namespace llvm;
@@ -35,10 +36,27 @@ int main(int argc, char** argv)
     SVFIRBuilder builder;
     cout << "Generating SVFIR(PAG), call graph and ICFG ..." << endl;
 
-    // TODO: here, generate SVFIR(PAG), call graph and ICFG, and dump them to files
+    // Generate SVFIR(PAG), call graph and ICFG, and dump them to files.
     //@{
+    SVFIR* pag = builder.build();
+    pag->dump("pag");
+
+    // Resolve indirect calls with Andersen's pointer analysis.
+    AndersenWaveDiff* ander = AndersenWaveDiff::createAndersenWaveDiff(pag);
+    CallGraph* callGraph = ander->getCallGraph();
+    callGraph->dump("callgraph");
+
+    // Include the resolved indirect call/return edges in the ICFG.
+    ICFG* icfg = pag->getICFG();
+    icfg->updateCallGraph(callGraph);
+    icfg->dump("icfg");
 
     //@}
+
+    AndersenWaveDiff::releaseAndersenWaveDiff();
+    SVFIR::releaseSVFIR();
+    LLVMModuleSet::releaseLLVMModuleSet();
+    delete[] arg_value;
 
     return 0;
 }
