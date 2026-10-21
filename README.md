@@ -401,19 +401,50 @@ ssh-add ~/.ssh/id_ed25519
 cat ~/.ssh/id_ed25519.pub
 ```
 
+![SSH agent 已加载密钥并成功显示公钥的实际截图](images/18-ssh-public-key-success.png)
+
+**截图说明：** `Identity added` 表示私钥已成功载入 SSH agent；随后 `cat ~/.ssh/id_ed25519.pub` 输出了以 `ssh-ed25519` 开头的完整公钥。该公钥已添加到 GitHub，并已验证 GitHub 能将其识别为账号 `rainbow180121920`。
+
 复制 `cat` 输出中以 `ssh-ed25519` 开头的完整一行，将 **.pub 公钥**添加到 GitHub：头像 → **Settings → SSH and GPG keys → New SSH key**。只能复制或公开 `id_ed25519.pub`，不要复制私钥 `id_ed25519`。
 
 配置说明：https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
 
-测试连接并改用 SSH 地址：
+直接测试默认 SSH 地址时，本机网络关闭了 22 端口：
 
 ```bash
 ssh -T git@github.com
+```
+
+![GitHub SSH 22 端口连接被当前网络关闭的实际截图](images/19-github-ssh-port22-closed.png)
+
+`Connection closed ... port 22` 表示网络连接问题，不是密钥错误。GitHub 官方还提供 443 端口；本机已实际验证下面的 443 入口能够成功认证，并返回 `Hi rainbow180121920! You've successfully authenticated`：
+
+```bash
+ssh -T -p 443 git@ssh.github.com
+```
+
+由于本机尚无 `~/.ssh/config`，执行下面的完整命令，让以后访问 `github.com` 时自动走 443 端口：
+
+```bash
+cat > ~/.ssh/config <<'EOF'
+Host github.com
+    HostName ssh.github.com
+    User git
+    Port 443
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+EOF
+chmod 600 ~/.ssh/config
+ssh -T git@github.com
+```
+
+首次询问是否信任主机时，应对照 [GitHub 官方指纹](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints)，一致后输入 `yes`。看到包含 `rainbow180121920` 的认证成功消息即可；GitHub 不提供 SSH shell，所以该提示之后退出属于正常情况。然后把作业仓库改为 SSH 地址：
+
+```bash
+cd ~/sa-course/Assignment-1
 git remote set-url origin git@github.com:rainbow180121920/Assignment-1.git
 git remote -v
 ```
-
-首次连接应对照 [GitHub 官方指纹](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints)，一致后确认。看到包含自己的用户名的认证成功消息即可；GitHub 不提供 SSH shell。
 
 ### 第 10 步：填写 README 并推送
 
@@ -479,7 +510,7 @@ cmake --version
 - `cmake version 3.31.10` 表示重启后 CMake 仍可正常使用，并满足作业要求。
 - 开头的 `This message is shown once a day` 只是 Ubuntu 的每日提示，不是报错，无需处理。
 
-**当前下一步：** Assignment-1 已成功编译，`add.c` 测试已生成三个非空 DOT 文件。当前 `ssh-keygen` 正在等待保存路径：按 Enter 接受默认路径，再按 Enter 两次留空口令；随后逐行运行 `eval`、`ssh-add`、`cat`，把 `.pub` 公钥添加到 GitHub。另需安装 Graphviz 后将三个 DOT 文件转成 PNG。以后每次启动，在继续作业前执行：
+**当前下一步：** SSH 密钥已经生成并添加到 GitHub，443 端口认证已实际成功；默认 22 端口被当前网络关闭。现在按第 9 步创建 `~/.ssh/config`，让 `github.com` 自动走 443，再将 `origin` 改为 SSH 地址。另需安装 Graphviz 后将三个 DOT 文件转成 PNG。以后每次启动，在继续作业前执行：
 
 ```bash
 source ~/sa-course/SVF/setup.sh
@@ -492,6 +523,7 @@ cd ~/sa-course/Assignment-1
 - CMake / LLVM 版本：CMake 3.31.10；LLVM 16.0.4（均已实际检查）
 - 编译结果：SVF Release 构建成功；Assignment-1 的 `svfir` 已构建到 100%
 - 测试用例及结果：`Test-Cases/add.c` 已使用 LLVM 16 编译为 bitcode，运行后成功生成非空的 `pag.dot`、`callgraph.dot`、`icfg.dot`；Graphviz PNG 转换待完成
+- GitHub 认证：ED25519 公钥已添加；SSH 22 端口被网络关闭，GitHub SSH 443 端口已成功认证；SSH config 与 origin 地址待更新
 - PR 链接：<填写>
 
-说明：本文包含 16 张用户提供的实机截图（安装、环境检查与恢复、依赖安装及两次修复、SVF 下载与编译、作业 Fork 与 Clone、Assignment-1 编译与测试、SSH 密钥交互）、1 张真实 GitHub 页面截图和 3 张标注的操作示意图。SVF 与 Assignment-1 均已在本机成功编译，`add.c` 的三个 DOT 图已通过实际测试；Graphviz 转图、GitHub 推送和 PR 尚待完成。Ubuntu 官方 WSL 镜像标注约 **344M**；安装渠道及额外组件大小可能不同。
+说明：本文包含 18 张用户提供的实机截图（安装、环境检查与恢复、依赖安装及两次修复、SVF 下载与编译、作业 Fork 与 Clone、Assignment-1 编译与测试、SSH 密钥生成及端口 22 报错）、1 张真实 GitHub 页面截图和 3 张标注的操作示意图。SVF 与 Assignment-1 均已在本机成功编译，`add.c` 的三个 DOT 图已通过实际测试，GitHub SSH 443 认证也已成功；Graphviz 转图、GitHub 推送和 PR 尚待完成。Ubuntu 官方 WSL 镜像标注约 **344M**；安装渠道及额外组件大小可能不同。
